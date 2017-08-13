@@ -7,6 +7,7 @@ use App\Http\Requests;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\User;
 use App\Transformer\UserAccountTransformer;
+use Route;
 
 
 class UserAccountController extends Controller
