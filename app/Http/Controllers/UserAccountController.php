@@ -93,6 +93,7 @@ class UserAccountController extends Controller
         }
     }
 
+    /*
     public function showRoutes()
     {
         $routeCollection = Route::getRoutes();
@@ -112,6 +113,6 @@ class UserAccountController extends Controller
         }
         echo "</table>";
     }
-
+*/
 
 }

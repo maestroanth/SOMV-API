@@ -30,7 +30,7 @@ Route::delete('account/{id}','UserAccountController@destroy');
 Route::post('account/post','UserAccountController@store');
 Route::post('account/edit/{id}','UserAccountController@edit');
 
-Route::get('routes','UserAccountController@showRoutes');
+//Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 
 //OAuth2 Routes
 Route::get('/redirect', function () {
