@@ -103,7 +103,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY','6bq73lnrefow4rmji9wcenlivy7urd0j'),
+    'key' => env('APP_KEY','eykentrqmwugx8z8hvd74ovjda8bnouy'),
 
     'cipher' => 'AES-256-CBC',
 
@@ -167,6 +167,9 @@ return [
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
+
+
+        EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
 
         /*
          * Application Service Providers...

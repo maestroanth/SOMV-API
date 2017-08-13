@@ -12,13 +12,24 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\UserAccount::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
-        'name' => $faker->name,
+        'sagename' => $faker->name,
+        'realname' => $faker->name,
         'email' => $faker->unique()->safeEmail,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => $password ?: $password = bcrypt('test123'),
         'remember_token' => str_random(10),
     ];
 });
+
+/*
+ *          $table->increments('id');
+            $table->string('sagename');
+            $table->string('realname');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+ */
