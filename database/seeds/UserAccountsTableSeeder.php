@@ -11,6 +11,6 @@ class UserAccountsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\UserAccount::class, 15)->create();
+        factory(App\User::class, 15)->create();
     }
 }

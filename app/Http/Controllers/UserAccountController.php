@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use EllipseSynergie\ApiResponse\Contracts\Response;
-use App\UserAccount;
+use App\User;
 use App\Transformer\UserAccountTransformer;
 
 
@@ -21,7 +21,7 @@ class UserAccountController extends Controller
     public function index()
     {
         //Get all users
-        $userAccounts = UserAccount::paginate(15);
+        $userAccounts = User::paginate(15);
         // Return a collection of $task with pagination
         return $this->response->withPaginator($userAccounts, new  UserAccountTransformer());
     }
@@ -29,7 +29,7 @@ class UserAccountController extends Controller
     public function show($id)
     {
         //Get the user
-        $userAccount = UserAccount::find($id);
+        $userAccount = User::find($id);
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         }
@@ -40,7 +40,7 @@ class UserAccountController extends Controller
     public function destroy($id)
     {
         //Get the user
-        $userAccount = UserAccount::find($id);
+        $userAccount = User::find($id);
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         }
@@ -55,7 +55,7 @@ class UserAccountController extends Controller
 
     public function store(Request $request)  {
 
-        $userAccount = new UserAccount;
+        $userAccount = new User;
 
         $userAccount->id = $request->input('id');
         $userAccount->password = $request->input('password');
@@ -72,7 +72,7 @@ class UserAccountController extends Controller
     }
 
     public function edit(Request $request,$id) {
-        $userAccount = UserAccount::find($id);
+        $userAccount = User::find($id);
         if (!$userAccount) {
             return $this->response->errorNotFound('User Account ID Not Found');
         }

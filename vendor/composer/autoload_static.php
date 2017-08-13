@@ -387,7 +387,7 @@ class ComposerStaticInit9b68b7bbb0014473eea98535f440eb98
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Transformer\\UserAccountTransformer' => __DIR__ . '/../..' . '/app/Transformer/UserAccountTransformer.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\UserAccount' => __DIR__ . '/../..' . '/app/UserAccount.php',
+        'App\\User' => __DIR__ . '/../..',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
