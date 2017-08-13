@@ -23,6 +23,7 @@ class UserAccountController extends Controller
         //Get all users
         $userAccounts = User::paginate(15);
         // Return a collection of $task with pagination
+
         return $this->response->withPaginator($userAccounts, new  UserAccountTransformer());
     }
 
@@ -71,12 +72,12 @@ class UserAccountController extends Controller
 
     }
 
-    public function edit(Request $request,$id) {
+    public function edit(Request $request,$id)
+    {
         $userAccount = User::find($id);
         if (!$userAccount) {
             return $this->response->errorNotFound('User Account ID Not Found');
-        }
-        else {
+        } else {
             $userAccount->id = $id;
             $userAccount->password = $request->input('password');
             $userAccount->sagename = $request->input('sagename');
@@ -84,11 +85,21 @@ class UserAccountController extends Controller
             $userAccount->email = $request->input('email');
         }
 
-        if($userAccount->save()) {
+        if ($userAccount->save()) {
             return $this->response->withItem($userAccount, new  UserAccountTransformer());
         } else {
             return $this->response->errorInternalError('Could not create a user account');
         }
     }
+
+    public function showRoutes()
+    {
+        $routeCollection = Route::getRoutes();
+
+        foreach ($routeCollection as $value) {
+            echo $value->getPath();
+        }
+    }
+
 
 }

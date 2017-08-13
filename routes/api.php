@@ -30,6 +30,7 @@ Route::delete('account/{id}','UserAccountController@destroy');
 Route::post('account/post','UserAccountController@store');
 Route::post('account/edit/{id}','UserAccountController@edit');
 
+Route::get('showRoutes','UserAccountController@showRoutes');
 
 //OAuth2 Routes
 Route::get('/redirect', function () {
@@ -96,6 +97,43 @@ Route::post('/register-user', function (Request $request) {
         'message' => 'user successfully created.'
     ];
 });
+
+
+/*
+ * 4 types of Oauth grants + "Refresh Grant"
+ *
+ *Authorization Grant: AKA 3-legged Oauth. Authorized by third party. Flow: Tell user they can login via Facebook.
+ *After login, Facebook asks the user if they want to authorize my application to access their user info on Facebook.
+ *Once approved, the user will be redirected to our apps URL with a callback along with and authorization code.
+ * My applications then uses this code to obtain an access token from Facebook which can be used to get the user details.
+ *Creative point: this could be a cool thing to do as bonus 'universe card' related to Facebook. However, they still need
+ * to create a 'sagename' for this app specifically.
+ *
+ * Implicit Grant: Similar to authorization, except the authorization server (Facebook) sends the authorization token
+ * instead of the authorization code to bounce back again.
+ * Creative Point: This will be the grant I want since I want this app to be decoupled as much from the server as possible
+ * if I want to use 3rd party authorization.  Plus, that 3rd extra step seems needlessly heinous.
+ *
+ * Resource Owner Password Credentials Grant: For dealing with a client we trust like a first party app for
+ * our own website. The client sends login credentials to authorization server and the server directly issues
+ * the access token.
+ *
+ * Client Credentials Grant: A grant where no user interaction required (machine to machine communication).
+ * I.e. the app wants to show a catalog to the user or store some data related to the app on the server.
+ *
+ * Refresh token grant: When server issues access token, it also sets an expiration for that token. The authorization
+ * server will send a refresh token while issuing the access token, which can be used to request a new access token.
+ * This flow is not available when using Implicit Grants.s
+ *
+ *
+ *
+ * For current purposes this app will only use the Password Credentials and Refresh token grants.
+ * Later on, I'll try to get a google API login integration going with google oauth playground which I was
+ * able to get working.  This would be great for a real "business" case where employers would like to
+ * see this implementation in my app, but serves hollow use cases for this particular app.
+ *
+ */
+
 /*
 
 *****USER JSON FORMAT (NOTE DO NOT ADD ID IN JSON THAT IS AUTO OR IN URL FOR UPDATES****
