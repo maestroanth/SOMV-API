@@ -21,11 +21,12 @@ class UserAccountController extends Controller
     public function index()
     {
         //Get all users
-        $userAccounts = UserAccount::paginate(15);
+       // $userAccounts = UserAccount::paginate(15);
         // Return a collection of $task with pagination
-        return $this->response->withPaginator($userAccounts, new  UserAccountTransformer());
+        $this->response = 'test';
+        return $this->response;//$this->response->withPaginator($userAccounts, new  UserAccountTransformer());
     }
-
+/*
     public function show($id)
     {
         //Get the user
@@ -90,5 +91,6 @@ class UserAccountController extends Controller
             return $this->response->errorInternalError('Could not create a user account');
         }
     }
+*/
 
 }
