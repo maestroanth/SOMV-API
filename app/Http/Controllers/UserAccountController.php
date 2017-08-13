@@ -94,6 +94,7 @@ class UserAccountController extends Controller
     }
     public function createOAuthUser(Request $request)
     {
+
         $userAccount = new User;
 
         $userAccount->id = $request->input('id');
@@ -102,14 +103,16 @@ class UserAccountController extends Controller
         $userAccount->realname = $request->input('realname');
         $userAccount->email = $request->input('email');
 
-        if($userAccount->save()) {
+        if ($userAccount->save()) {
             return $this->response->withItem($userAccount, new  UserAccountTransformer());
         } else {
             return $this->response->errorInternalError('Could not create a user account');
         }
+    }
         /*
-        $v = validator($request->only('email', 'name', 'password'), [
-            'name' => 'required|string|max:255',
+        $v = validator($request->only('email', 'realname', 'password', 'sagename'), [
+            'realname' => 'required|string|max:255',
+            'sagename' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6',
         ]);
@@ -117,10 +120,11 @@ class UserAccountController extends Controller
         if ($v->fails()) {
             return response()->json($v->errors()->all(), 400);
         }
-        $data = request()->only('email', 'name', 'password');
+        $data = request()->only('email', 'realname', 'password', 'sagename');
 
         $user = \App\User::create([
-            'name' => $data['name'],
+            'realname' => $data['realname'],
+            'sagename' => $data['sagename'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -131,7 +135,7 @@ class UserAccountController extends Controller
             'grant_type' => 'password',
             'client_id' => $client->id,
             'client_secret' => $client->secret,
-            'username' => $data['email'],
+            'username' => $data['sagename'],
             'password' => $data['password'],
             'scope' => null,
         ]);
@@ -143,7 +147,7 @@ class UserAccountController extends Controller
         );
 
         return \Route::dispatch($proxy);
-        */
+
     }
     /*csrf_token()
     public function showRoutes()
