@@ -30,6 +30,38 @@ Route::delete('account/{id}','UserAccountController@destroy');
 Route::post('account/post','UserAccountController@store');
 Route::post('account/edit/{id}','UserAccountController@edit');
 
+
+//OAuth2 Routes
+Route::get('/redirect', function () {
+
+    $query = http_build_query([
+        'client_id' => '3',
+        'redirect_uri' => 'http://client.local/callback',
+        'response_type' => 'code',
+        'scope' => ''
+    ]);
+
+    return redirect('http://server.local/oauth/authorize?'.$query);
+});
+
+Route::get('/callback', function (Illuminate\Http\Request $request) {
+    $http = new \GuzzleHttp\Client;
+
+    $response = $http->post('http://server.local/oauth/token', [
+        'form_params' => [
+            'client_id' => '3',
+            'client_secret' => 'iX8YZrI198wwlFrBpfNSl8C2h7eTk1rQKMg28Qcm',
+            'grant_type' => 'authorization_code',
+            'redirect_uri' => 'http://client.local/callback',
+            'code' => $request->code,
+        ],
+    ]);
+    return json_decode((string) $response->getBody(), true);
+});
+
+Route::get('/user/{user}', function (App\user $user) {
+    return $user->email;
+});
 /*
 
 *****USER JSON FORMAT (NOTE DO NOT ADD ID IN JSON THAT IS AUTO OR IN URL FOR UPDATES****
