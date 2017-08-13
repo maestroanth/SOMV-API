@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
 
     protected $attributes = [
-        'sagename' => self::STATUS_UNCONFIRMED,
+        'sagename' => 'default sage',
     ];
     protected $fillable = [
         'sagename', 'realname', 'email', 'password',
