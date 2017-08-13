@@ -18,6 +18,7 @@ class User extends Authenticatable
 
     protected $attributes = [
         'sagename' => 'default sage',
+        'realname' => 'default name',
     ];
     protected $fillable = [
         'sagename', 'realname', 'email', 'password',
