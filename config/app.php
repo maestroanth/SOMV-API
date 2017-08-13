@@ -171,6 +171,8 @@ return [
 
         EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
 
+        Laravel\Passport\PassportServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
