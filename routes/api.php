@@ -64,7 +64,7 @@ Route::get('/user/{user}', function (App\user $user) {
 });
 
 //https://stackoverflow.com/questions/39525968/laravels-5-3-passport-and-api-routes/40393694#40393694
-
+//if I get no upstream error do composer dump-autoload
 Route::post('/register-user', function (Request $request) {
 
     $name     = $request->input('name');
