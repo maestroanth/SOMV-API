@@ -68,4 +68,26 @@ class RegisterController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+
+    /**
+     * The user has been registered.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  mixed                    $user
+     *
+     * @return mixed
+     */
+    public function registered(Request $request, $user)
+    {
+        if ($request->wantsJson()) {
+
+            $token = $user->createToken('Token Name', ['Scopes'])->accessToken;
+
+            return response()->json(['token' => $token], 201);
+        }
+
+        return false;
+    }
+
 }

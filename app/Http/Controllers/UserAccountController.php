@@ -93,7 +93,8 @@ class UserAccountController extends Controller
         }
     }
 
-    /*
+
+    /*csrf_token()
     public function showRoutes()
     {
         $routeCollection = Route::getRoutes();
