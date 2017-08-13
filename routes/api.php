@@ -132,6 +132,8 @@ Route::post('/register-user', function (Request $request) {
  * able to get working.  This would be great for a real "business" case where employers would like to
  * see this implementation in my app, but serves hollow use cases for this particular app.
  *
+ *
+ * Password Grant Laravel Tutorial: https://laracasts.com/series/whats-new-in-laravel-5-3/episodes/13
  */
 
 /*
