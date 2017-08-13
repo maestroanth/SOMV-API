@@ -98,7 +98,7 @@ class UserAccountController extends Controller
         $routeCollection = Route::getRoutes();
 
         foreach ($routeCollection as $value) {
-            echo $value->getPath();
+            echo $value->uri()();
         }
     }
 
