@@ -15,6 +15,10 @@ class User extends Authenticatable
      *hh
      * @var array
      */
+
+    protected $attributes = [
+        'sagename' => self::STATUS_UNCONFIRMED,
+    ];
     protected $fillable = [
         'sagename', 'realname', 'email', 'password',
     ];

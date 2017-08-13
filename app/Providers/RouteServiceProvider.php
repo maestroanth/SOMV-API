@@ -40,7 +40,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        Passport::routes();
+        //Passport::routes();
         //
     }
 
