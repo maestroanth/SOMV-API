@@ -65,7 +65,7 @@ Route::get('/user/{user}', function (App\user $user) {
 });
 
 Route::get('/getCSRF', function () {
-    return csrf_token();;
+    return csrf_token();
 });
 
 
