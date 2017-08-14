@@ -172,7 +172,7 @@ return [
         EllipseSynergie\ApiResponse\Laravel\ResponseServiceProvider::class,
 
         Laravel\Passport\PassportServiceProvider::class,
-
+        Barryvdh\Cors\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
