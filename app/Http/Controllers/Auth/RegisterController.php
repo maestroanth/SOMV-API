@@ -63,12 +63,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $userAccount = User::create([
             'sagename' => $data['sagename'],
             'realname' => $data['realname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ]);
+        ])
+
+        if($userAccount->save()) {
+            return $this->response->withItem($userAccount, new  UserAccountTransformer());
+        } else {
+            return $this->response->errorInternalError('Could not create a user account');
+        }
+        ;
     }
 
 
@@ -100,6 +107,6 @@ class RegisterController extends Controller
             'oauth/token',
             'POST'
         );
-    }
-*/
+    }*/
+
 }
