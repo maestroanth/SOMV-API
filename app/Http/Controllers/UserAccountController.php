@@ -67,6 +67,7 @@ class UserAccountController extends Controller
         );
 
 
+        $responseItem = new User;
         $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
             'realname' => $userAccount['realname'],
@@ -84,7 +85,7 @@ class UserAccountController extends Controller
         ]);
 */
         if($responseItem ->save()) {
-            return $this->response->withItem(responseItem);
+            return $this->response->withItem($responseItem);
         } else {
             return $this->response->errorInternalError('Could not create a user account');
         }
