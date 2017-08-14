@@ -78,6 +78,7 @@ class RegisterController extends Controller
      *
      * @return mixed
      */
+    /*
     public function registered(Request $request, $user)
     {
         if ($request->wantsJson()) {
@@ -89,5 +90,5 @@ class RegisterController extends Controller
 
         return false;
     }
-
+*/
 }
