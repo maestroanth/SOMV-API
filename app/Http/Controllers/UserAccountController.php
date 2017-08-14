@@ -58,7 +58,7 @@ class UserAccountController extends Controller
 
     public function store(Request $request)  {
 
-        $validation = Validator::make($data, [
+        $validation = Validator::make($request, [
             //'sagename' => 'required|string|max:255',
             //'realname' => 'required|string|max:255',
             //'email' => 'required|string|email|max:255|unique:users',
