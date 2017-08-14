@@ -73,6 +73,7 @@ class RegisterController extends Controller
     }
 
 
+
     /**
      * The user has been registered.
      *
@@ -81,17 +82,17 @@ class RegisterController extends Controller
      *
      * @return mixed
      */
-    /*
-    public function registered(Request $request, $user)
+
+    public function registered($user)
     {
-        if ($request->wantsJson()) {
+       // if ($request->wantsJson()) {
 
             $token = $user->createToken('Token Name', ['Scopes'])->accessToken;
 
             return response()->json(['token' => $token], 201);
-        }
+        //}
 
-        return false;
+        //return false;
     }
-*/
+
 }
