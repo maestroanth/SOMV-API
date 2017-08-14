@@ -129,13 +129,11 @@ class UserAccountController extends Controller
 
 // Fire off the internal request.
 
-        $proxy = Request::create(
-            'oauth/token',
-            'POST'
-        );
-        $proxy->headers->set('Access-Control-Allow-Origin', '*');
-        return \Route::dispatch($proxy);
-
+        $request2 = Request::create('oauth/token', 'POST');
+        $request2->header('Access-Control-Allow-Origin', '*');
+        Route::dispatch($request2);
+        $response = Route::dispatch($request2);
+        return($response);
     }
     /*csrf_token()
     public function showRoutes()
