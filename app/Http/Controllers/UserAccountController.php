@@ -95,21 +95,7 @@ class UserAccountController extends Controller
     public function createOAuthUser(Request $request)
     {
 
-        $userAccount = new User;
-
-        $userAccount->id = $request->input('id');
-        $userAccount->password = $request->input('password');
-        $userAccount->sagename = $request->input('sagename');
-        $userAccount->realname = $request->input('realname');
-        $userAccount->email = $request->input('email');
-
-        if ($userAccount->save()) {
-            return $this->response->withItem($userAccount, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
-        }
-    }
-        /*
+       /*
         $v = validator($request->only('email', 'realname', 'password', 'sagename'), [
             'realname' => 'required|string|max:255',
             'sagename' => 'required|string|max:255',
@@ -120,9 +106,10 @@ class UserAccountController extends Controller
         if ($v->fails()) {
             return response()->json($v->errors()->all(), 400);
         }
+       */
         $data = request()->only('email', 'realname', 'password', 'sagename');
 
-        $user = \App\User::create([
+        \App\User::create([
             'realname' => $data['realname'],
             'sagename' => $data['sagename'],
             'email' => $data['email'],
@@ -141,12 +128,13 @@ class UserAccountController extends Controller
         ]);
 
 // Fire off the internal request.
+
         $proxy = Request::create(
             'oauth/token',
             'POST'
         );
 
-        return \Route::dispatch($proxy);
+        return \Route::dispatch($proxy)->middleware('Cors');
 
     }
     /*csrf_token()
