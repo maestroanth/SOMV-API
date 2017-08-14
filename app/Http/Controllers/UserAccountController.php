@@ -57,20 +57,30 @@ class UserAccountController extends Controller
 
     public function store(Request $request)  {
 
-        $userAccount = new User;
+        $validation = Validator::make($data, [
+            //'sagename' => 'required|string|max:255',
+            //'realname' => 'required|string|max:255',
+            //'email' => 'required|string|email|max:255|unique:users',
+            //'password' => 'required|string|min:6|confirmed',
+        ]);
 
-        $userAccount->id = $request->input('id');
-        $userAccount->password = $request->input('password');
-        $userAccount->sagename = $request->input('sagename');
-        $userAccount->realname = $request->input('realname');
-        $userAccount->email = $request->input('email');
+        if($validation) {
+            $userAccount = User::create([
+                'sagename' => $data['sagename'],
+                'realname' => $data['realname'],
+                'email' => $data['email'],
+                'password' => bcrypt($data['password']),
+            ]);
 
-        if($userAccount->save()) {
-            return $this->response->withItem($userAccount, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
+            if ($userAccount->save()) {
+                return $this->response->withItem($userAccount, new  UserAccountTransformer());
+            } else {
+                return $this->response->errorInternalError('Could not create a user account');
+            }
         }
-
+        else{
+            return $this->response->errorInternalError('Invalid user credentials');
+        }
     }
 
     public function edit(Request $request,$id)
