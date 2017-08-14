@@ -67,7 +67,8 @@ class UserAccountController extends Controller
         );
 
 
-        $responseItem = new User User::create([
+        $responseItem = new User;
+        $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
             'realname' => $userAccount['realname'],
             'email' => $userAccount['email'],
