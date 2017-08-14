@@ -2,13 +2,13 @@
 
 namespace App;
 
-//use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use /*HasApiTokens,*/ Notifiable;
+    use HasApiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -34,9 +34,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /*
+
     public function findForPassport($sagename) {
         return self::where('sagename', $sagename)->first(); // change column name whatever you use in credentials
     }
-    */
+
 }
