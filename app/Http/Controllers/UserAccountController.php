@@ -133,8 +133,10 @@ class UserAccountController extends Controller
             'oauth/token',
             'POST'
         );
-
-        return \Route::dispatch($proxy)->middleware('Cors');
+        $proxy->headers->set('Access-Control-Allow-Origin', '*');
+        $proxy->headers->set('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, PATCH, DELETE');
+        $proxy->headers->set('Access-Control-Allow-Headers', $request->header('Access-Control-Request-Headers'));
+        return \Route::dispatch($proxy);
 
     }
     /*csrf_token()
