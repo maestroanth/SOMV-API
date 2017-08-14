@@ -58,13 +58,20 @@ class UserAccountController extends Controller
 
     public function store(Request $request)  {
 
-        $userAccount = new User;
+        $userAccount = array();
 
         $userAccount->id = $request->input('id');
         $userAccount->password = $request->input('password');
         $userAccount->sagename = $request->input('sagename');
         $userAccount->realname = $request->input('realname');
         $userAccount->email = $request->input('email');
+
+        User::create([
+            'sagename' => $userAccount['sagename'],
+            'realname' => $userAccount['realname'],
+            'email' => $userAccount['email'],
+            'password' => bcrypt($userAccount['password']),
+        ]);
 
 /*
         Validator::make($userAccount, [

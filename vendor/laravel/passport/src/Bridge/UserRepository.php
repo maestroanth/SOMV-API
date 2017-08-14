@@ -41,7 +41,7 @@ class UserRepository implements UserRepositoryInterface
         if (method_exists($model, 'findForPassport')) {
             $user = (new $model)->findForPassport($username);
         } else {
-            $user = (new $model)->where('sagename', $username)->first();
+            $user = (new $model)->where('username', $username)->first();
         }
 
         if (! $user) {
