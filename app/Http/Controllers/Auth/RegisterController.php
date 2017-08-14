@@ -83,16 +83,24 @@ class RegisterController extends Controller
      * @return mixed
      */
 
-    public function registered($user)
+    public function registered(Request $request, $user)
     {
-       // if ($request->wantsJson()) {
+       $client = \Laravel\Passport\Client::where('password_client', 1)->first();
 
-            $token = $user->createToken('Token Name', ['Scopes'])->accessToken;
+        $request->request->add([
+            'grant_type' => 'password',
+            'client_id' => $client->id,
+            'client_secret' => $client->secret,
+            'username' => $data['sagename'],
+            'password' => $data['password'],
+            'scope' => null,
+        ]);
 
-            return response()->json(['token' => $token], 201);
-        //}
-
-        //return false;
+// Fire off the internal request.
+        $proxy = Request::create(
+            'oauth/token',
+            'POST'
+        );
     }
 
 }
