@@ -67,7 +67,7 @@ class UserAccountController extends Controller
         );
 
 
-        User::create([
+        $returnUser = User::create([
             'sagename' => $userAccount['sagename'],
             'realname' => $userAccount['realname'],
             'email' => $userAccount['email'],
@@ -82,9 +82,9 @@ class UserAccountController extends Controller
             //'password' => 'required|string|min:6|confirmed',
             //'password' => 'required|string|min:6|confirmed',
         ]);
-*/      $this->response = $userAccount;
+*/
         //if($userAccount) {
-            return $this->response($userAccount)->json;
+            return $this->response($returnUser)->json;
         //} else {
          //   return $this->response->errorInternalError('Could not create a user account');
        // }
