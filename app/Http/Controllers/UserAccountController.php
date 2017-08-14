@@ -82,9 +82,9 @@ class UserAccountController extends Controller
             //'password' => 'required|string|min:6|confirmed',
             //'password' => 'required|string|min:6|confirmed',
         ]);
-*/
+*/      $this->response = $userAccount;
         //if($userAccount) {
-            return $userAccount;
+            return $this->response->json();
         //} else {
          //   return $this->response->errorInternalError('Could not create a user account');
        // }
