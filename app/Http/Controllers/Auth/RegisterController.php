@@ -81,7 +81,7 @@ class RegisterController extends Controller
      * @param  mixed                    $user
      *
      * @return mixed
-     */
+
 
     public function registered(Request $request, $user)
     {
@@ -102,5 +102,5 @@ class RegisterController extends Controller
             'POST'
         );
     }
-
+*/
 }
