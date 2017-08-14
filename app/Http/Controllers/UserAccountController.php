@@ -8,7 +8,8 @@ use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\User;
 use App\Transformer\UserAccountTransformer;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class UserAccountController extends Controller
 {
