@@ -32,4 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function findForPassport($sagename) {
+        return self::where('sagename', $sagename)->first(); // change column name whatever you use in credentials
+    }
 }
