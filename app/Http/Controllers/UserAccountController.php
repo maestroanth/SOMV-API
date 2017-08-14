@@ -127,7 +127,7 @@ class UserAccountController extends Controller
             'scope' => null,
         ]);
 
-// Fire off the internal request.
+        // Fire off the internal request.
 
         $request2 = Request::create('oauth/token', 'POST');
         $request2->header('Access-Control-Allow-Origin', '*');
