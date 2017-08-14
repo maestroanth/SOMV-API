@@ -84,7 +84,7 @@ class UserAccountController extends Controller
         ]);
 */
         if($responseItem ->save()) {
-            return $this->response->withItem($responseItem);
+            return $this->response->withItem(responseItem);
         } else {
             return $this->response->errorInternalError('Could not create a user account');
         }
