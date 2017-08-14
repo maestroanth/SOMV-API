@@ -57,14 +57,15 @@ class UserAccountController extends Controller
     }
 
     public function store(Request $request)  {
+//
+        $userAccount = array(
+            'id' => $request->input('id'),
+            'password' => $request->input('password'),
+            'sagename' => $request->input('sagename'),
+            'realname' => $request->input('realname'),
+            'email' => $request->input('email'),
+        );
 
-        $userAccount = array();
-
-        $userAccount->id = $request->input('id');
-        $userAccount->password = $request->input('password');
-        $userAccount->sagename = $request->input('sagename');
-        $userAccount->realname = $request->input('realname');
-        $userAccount->email = $request->input('email');
 
         User::create([
             'sagename' => $userAccount['sagename'],
