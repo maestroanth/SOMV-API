@@ -68,14 +68,13 @@ class RegisterController extends Controller
             'realname' => $data['realname'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-        ])
+        ]);
 
         if($userAccount->save()) {
             return $this->response->withItem($userAccount, new  UserAccountTransformer());
         } else {
             return $this->response->errorInternalError('Could not create a user account');
-        }
-        ;
+        };
     }
 
 
