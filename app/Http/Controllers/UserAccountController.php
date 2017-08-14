@@ -83,11 +83,11 @@ class UserAccountController extends Controller
             //'password' => 'required|string|min:6|confirmed',
         ]);
 */
-        if($userAccount) {
+        //if($userAccount) {
             return $this->response->withItem($userAccount);
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
-        }
+        //} else {
+         //   return $this->response->errorInternalError('Could not create a user account');
+       // }
 
     }
 
