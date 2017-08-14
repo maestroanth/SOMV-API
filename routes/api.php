@@ -43,9 +43,6 @@ Route::get('/user/{user}', function (App\user $user) {
 Route::get('/getCSRF', function () {
     return csrf_token();
 });
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
 
 /*
 //https://stackoverflow.com/questions/39525968/laravels-5-3-passport-and-api-routes/40393694#40393694
