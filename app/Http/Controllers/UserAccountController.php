@@ -134,8 +134,6 @@ class UserAccountController extends Controller
             'POST'
         );
         $proxy->headers->set('Access-Control-Allow-Origin', '*');
-        $proxy->headers->set('Access-Control-Allow-Methods', 'HEAD, GET, POST, PUT, PATCH, DELETE');
-        $proxy->headers->set('Access-Control-Allow-Headers', $request->header('Access-Control-Request-Headers'));
         return \Route::dispatch($proxy);
 
     }
