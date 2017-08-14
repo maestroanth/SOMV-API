@@ -65,15 +65,15 @@ class UserAccountController extends Controller
         $userAccount->realname = $request->input('realname');
         $userAccount->email = $request->input('email');
 
-        /*
-        Validator::make($data, [
+
+        Validator::make($userAccount, [
             //'sagename' => 'required|string|max:255',
             //'realname' => 'required|string|max:255',
             //'email' => 'required|string|email|max:255|unique:users',
             //'password' => 'required|string|min:6|confirmed',
             //'password' => 'required|string|min:6|confirmed',
         ]);
-*/
+
         if($userAccount->save()) {
             return $this->response->withItem($userAccount, new  UserAccountTransformer());
         } else {
