@@ -84,7 +84,7 @@ class UserAccountController extends Controller
         ]);
 */      $this->response = $userAccount;
         //if($userAccount) {
-            return $this->response;
+            return $this->response($userAccount)->json;
         //} else {
          //   return $this->response->errorInternalError('Could not create a user account');
        // }
