@@ -15,12 +15,12 @@ class User extends Authenticatable
      *hh
      * @var array
      */
-    /*
+
     protected $attributes = [
         'sagename' => 'default sage',
         'realname' => 'default name',
     ];
-    */
+
     protected $fillable = [
         'sagename', 'realname', 'email', 'password',
     ];
