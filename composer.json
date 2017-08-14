@@ -9,8 +9,7 @@
         "ellipsesynergie/api-response": "^0.14.2",
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
-        "league/fractal": "^0.16.0",
-        "lucadegasperi/oauth2-server-laravel": "4.0.x@dev"
+        "league/fractal": "^0.16.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
