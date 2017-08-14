@@ -56,7 +56,7 @@ class UserAccountController extends Controller
 
     }
 
-    public function store(Request $request)  {
+    public function store(Request $request, array $data)  {
 
         $validation = Validator::make($request, [
             //'sagename' => 'required|string|max:255',
