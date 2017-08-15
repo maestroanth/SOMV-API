@@ -88,7 +88,7 @@ class UserAccountController extends Controller
         //need to add oauth client validation too
         $oauthSecret = $request->input('secret');
 
-        if($oauthSecret == Client::where('secret', $oauthSecret)()){
+        if($oauthSecret == Client::where('secret', $oauthSecret)){
 
             // Fire off the internal request.
             $token = Request::create(
