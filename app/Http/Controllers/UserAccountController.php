@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Database\Eloquent\Model;
-use Laravel\Passport\Client;
+use Laravel\Passport;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
 
 class UserAccountController extends Controller
 {
@@ -60,6 +62,10 @@ class UserAccountController extends Controller
 
     public function store(Request $request)  {
 //
+        $responseItem = new User;
+        $client = new Client();
+        $unhashedPassword = null;
+
         $userAccount = array(
             'id' => $request->input('id'),
             'password' => $request->input('password'),
@@ -76,7 +82,8 @@ class UserAccountController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
         */
-        $responseItem = new User;
+
+        $unhashedPassword = $userAccount['password'];
         $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
             'realname' => $userAccount['realname'],
@@ -86,16 +93,30 @@ class UserAccountController extends Controller
 
 
         //need to add oauth client validation too
+        $oauthID = $request->input('id');
         $oauthSecret = $request->input('secret');
 
-        if($oauthSecret == Client::where('secret', $oauthSecret)){
+
+
+        if($oauthSecret == \Laravel\Passport\Client::where('secret', $oauthSecret)){
 
             // Fire off the internal request.
-            $token = Request::create(
-                'oauth/token',
-                'POST'
+            $token = $client->post('https://sageofthemultiverse.com/public/oauth/token', array(), array(
+                'grant_type' => 'password',
+                'client_id'   => 71,//it's my id: this needs to
+                'client_secret'   => 'bHFAwcSejLJXTplv05R1MnUUY9RUBa2TcsxjAj54',//it's my account
+                'username'   => $responseItem['sagename'],
+                'password'   => $unhashedPassword,
+                'scope'=> '*';
+            /*// Prevent users from accessing sensitive files by sanitizing input
+            $_POST = array('firstname' => '@/etc/passwd');
+            $request = $client->post('http://www.example.com', array(), array (
+                'firstname' => str_replace('@', '', $_POST['firstname'])
+            ));*/
+
+            //add if internal request doesn't work
             );
-            return \Route::dispatch($token);
+            return $this->response->$token;
         }
         else{
             return $this->response->errorInternalError('Client secret not authenticated');
