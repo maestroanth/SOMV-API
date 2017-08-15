@@ -109,7 +109,7 @@ class UserAccountController extends Controller
             return $this->response->withItem($responseItem, new  UserAccountTransformer());
         }
         else{
-            return $this->response->errorInternalError('Client secret not authenticated');
+            return $this->response->oauthSecret;
         }
 
 
