@@ -64,7 +64,6 @@ class UserAccountController extends Controller
 //
         $responseItem = new User;
         $client = new Client();
-        $unhashedPassword = null;
 
         $userAccount = array(
             'id' => $request->input('id'),
@@ -83,7 +82,6 @@ class UserAccountController extends Controller
         ]);
         */
 
-        $unhashedPassword = $userAccount['password'];
         $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
             'realname' => $userAccount['realname'],
@@ -93,30 +91,22 @@ class UserAccountController extends Controller
 
 
         //need to add oauth client validation too
-        $oauthID = $request->input('id');
         $oauthSecret = $request->input('secret');
 
 
 
         if($oauthSecret == \Laravel\Passport\Client::where('secret', $oauthSecret)){
 
+
             // Fire off the internal request.
-            $token = $client->post('https://sageofthemultiverse.com/public/oauth/token', array(), array(
-                'grant_type' => 'password',
-                'client_id'   => 71,//it's my id: this needs to
-                'client_secret'   => 'bHFAwcSejLJXTplv05R1MnUUY9RUBa2TcsxjAj54',//it's my account
-                'username'   => $responseItem['sagename'],
-                'password'   => $unhashedPassword,
-                'scope'=> '*';
+            //$token = $client->post('https://sageofthemultiverse.com/public/oauth/token', array(), array();
             /*// Prevent users from accessing sensitive files by sanitizing input
             $_POST = array('firstname' => '@/etc/passwd');
             $request = $client->post('http://www.example.com', array(), array (
                 'firstname' => str_replace('@', '', $_POST['firstname'])
             ));*/
-
-            //add if internal request doesn't work
-            );
-            return $this->response->$token;
+            //);
+            return $this->response->withItem($responseItem, new  UserAccountTransformer());
         }
         else{
             return $this->response->errorInternalError('Client secret not authenticated');
