@@ -65,8 +65,15 @@ class UserAccountController extends Controller
             'realname' => $request->input('realname'),
             'email' => $request->input('email'),
         );
-
-
+        /*
+        Validator::make($userAccount, [
+            'sagename' => 'required|string|max:255',
+            'realname' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+        */
         $responseItem = new User;
         $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
@@ -75,20 +82,23 @@ class UserAccountController extends Controller
             'password' => bcrypt($userAccount['password']),
         ]);
 
-/*
-        Validator::make($userAccount, [
-            //'sagename' => 'required|string|max:255',
-            //'realname' => 'required|string|max:255',
-            //'email' => 'required|string|email|max:255|unique:users',
-            //'password' => 'required|string|min:6|confirmed',
-            //'password' => 'required|string|min:6|confirmed',
-        ]);
-*/
-        if($responseItem ->save()) {
-            return $this->response->withItem($responseItem, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
+
+        //need to add oauth client validation too
+        $oauthSecret = $request->input('secret');
+
+        if($oauthSecret == Client::where('secret', $oauthSecret)()){
+
+            // Fire off the internal request.
+            $token = Request::create(
+                'oauth/token',
+                'POST'
+            );
+            return \Route::dispatch($token);
         }
+        else{
+            return $this->response->errorInternalError('Client secret not authenticated');
+        }
+
 
     }
 
