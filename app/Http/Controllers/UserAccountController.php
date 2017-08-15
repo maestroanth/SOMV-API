@@ -10,6 +10,8 @@ use App\Transformer\UserAccountTransformer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Database\Eloquent\Model;
+use Laravel\Passport\Client;
 
 class UserAccountController extends Controller
 {
