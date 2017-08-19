@@ -28,7 +28,7 @@ Route::delete('account/{id}','UserAccountController@destroy');
 //Route::put('account','UserAccountController@store'); Laravel doesn't do 'puts' officially apparently
 // create new user
 Route::post('account/post','UserAccountController@store')->middleware('client');
-Route::post('account/edit/{id}','UserAccountController@edit')->middleware('password');
+Route::post('account/edit/{id}','UserAccountController@edit')->middleware('auth:api');
 
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 
