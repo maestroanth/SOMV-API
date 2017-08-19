@@ -90,27 +90,7 @@ class UserAccountController extends Controller
         ]);
 
 
-        //need to add oauth client validation too
-        //$oauthSecret = $request->input('secret');
 
-
-
-        //if($oauthSecret == \Laravel\Passport\Client::where('secret', $oauthSecret)){
-
-
-            // Fire off the internal request.
-            //$token = $client->post('https://sageofthemultiverse.com/public/oauth/token', array(), array();
-            /*// Prevent users from accessing sensitive files by sanitizing input
-            $_POST = array('firstname' => '@/etc/passwd');
-            $request = $client->post('http://www.example.com', array(), array (
-                'firstname' => str_replace('@', '', $_POST['firstname'])
-            ));*/
-            //);
-            //return $this->response->withItem($responseItem, new  UserAccountTransformer());
-        //}
-        //else{
-           // return $this->response->oauthSecret;
-       // }
         if ($responseItem->save()) {
             return $this->response->withItem($responseItem, new  UserAccountTransformer());
         } else {
@@ -138,6 +118,8 @@ class UserAccountController extends Controller
             return $this->response->errorInternalError('Could not create a user account');
         }
     }
+
+
     public function createOAuthUser(Request $request)
     {
 

@@ -19,31 +19,30 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // get list of accounts
-Route::get('accounts','UserAccountController@index');
+//Route::get('accounts','UserAccountController@index');
 // get specific user
-Route::get('account/{id}','UserAccountController@show');
+//Route::get('account/{id}','UserAccountController@show');
 // delete a user
 Route::delete('account/{id}','UserAccountController@destroy');
 // update existing user
 //Route::put('account','UserAccountController@store'); Laravel doesn't do 'puts' officially apparently
 // create new user
 Route::post('account/post','UserAccountController@store')->middleware('client');
-Route::post('account/edit/{id}','UserAccountController@edit');
+Route::post('account/edit/{id}','UserAccountController@edit')->middleware('password');
 
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
 
-Route::post('createOAuthUser','UserAccountController@createOAuthUser');
-
 Route::get('/user/{user}', function (App\user $user) {
     return $user->email;
 });
 
+/*
 Route::get('/getCSRF', function () {
     return csrf_token();
 });
-
+*/
 /*
 //https://stackoverflow.com/questions/39525968/laravels-5-3-passport-and-api-routes/40393694#40393694
 //if I get no upstream error do composer dump-autoload
