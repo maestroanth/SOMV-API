@@ -122,7 +122,9 @@ class UserAccountController extends Controller
                 return $this->response->errorNotFound('You are not allowed to edit this account.');
             }
             else {
-
+                if (isset($input['sagename'])){
+                    return $this->response->errorNotFound('Please contact Admin to change your sagename at https://www.netdoodler.com');
+                }
                 if (isset($input['password'])){
                     $userAccount->password = $request->input('password');
                 }
