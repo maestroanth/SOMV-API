@@ -46,28 +46,28 @@ class UserAccountController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        /*
-         * Since it is the 'sagename' that is going to be a unique identifier only changed through ME,
-         * if it doesn't match the id they are sending to request the change, I'll boot it.
-         */
+        //Get the user
         $userAccount = User::find($id);
-        $input = $request->input();
-        if ($userAccount->sagename != $input['sagename'])
-        {
-            return $this->response->errorNotFound('You are not allowed to delete this account. If you wish to change your sagename, please contact Admin to change your sagename at https://www.netdoodler.com');
+        if (!$userAccount) {
+            return $this->response->errorNotFound('User Not Found');
         }
         else {
-            if (!$userAccount) {
-                return $this->response->errorNotFound('User Not Found');
-            }
+            $input = $request->input();
+            if ($userAccount->sagename != $input['sagename']) {//sagename check
+                return $this->response->errorNotFound('You are not allowed to delete this account. If you wish to change your sagename, please contact Admin to change your sagename at https://www.netdoodler.com');
+            } else if ($userAccount->realname != $input['realname']) {//realname check
 
-            if ($userAccount->delete()) {
-                return $this->response->withItem($userAccount, new  UserAccountTransformer());
+                return $this->response->errorNotFound('Incorrect Real Name');
+
             } else {
-                return $this->response->errorInternalError('Could not delete a user');
+                if ($userAccount->delete()) {//here it deletes
+
+                    return $this->response->withItem($userAccount, new  UserAccountTransformer());
+                } else {
+                    return $this->response->errorInternalError('Could not delete a user');
+                }
             }
         }
-
     }
 
     public function store(Request $request)  {
