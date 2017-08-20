@@ -23,7 +23,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // get specific user
 //Route::get('account/{id}','UserAccountController@show');
 // delete a user
-Route::delete('account/delete/{id}','UserAccountController@destroy')->middleware('auth:api');
+Route::post('account/delete/{id}','UserAccountController@destroy')->middleware('auth:api');
 // update existing user
 //Route::put('account','UserAccountController@store'); Laravel doesn't do 'puts' officially apparently
 // create new user
