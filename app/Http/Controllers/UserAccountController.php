@@ -115,23 +115,24 @@ class UserAccountController extends Controller
         {
             return $this->response->errorNotFound('You are not allowed to edit this account.');
         }
+        else {
 
 
+            if (!$userAccount) {
+                return $this->response->errorNotFound('User Account ID Not Found');
+            } else {
+                $userAccount->id = $id;
+                $userAccount->password = $request->input('password');
+                $userAccount->sagename = $request->input('sagename');
+                $userAccount->realname = $request->input('realname');
+                $userAccount->email = $request->input('email');
+            }
 
-        if (!$userAccount) {
-            return $this->response->errorNotFound('User Account ID Not Found');
-        } else {
-            $userAccount->id = $id;
-            $userAccount->password = $request->input('password');
-            $userAccount->sagename = $request->input('sagename');
-            $userAccount->realname = $request->input('realname');
-            $userAccount->email = $request->input('email');
-        }
-
-        if ($userAccount->save()) {
-            return $this->response->withItem($userAccount, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
+            if ($userAccount->save()) {
+                return $this->response->withItem($userAccount, new  UserAccountTransformer());
+            } else {
+                return $this->response->errorInternalError('Could not create a user account');
+            }
         }
     }
 }
