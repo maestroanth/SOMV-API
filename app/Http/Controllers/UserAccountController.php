@@ -137,7 +137,7 @@ class UserAccountController extends Controller
                 }
 
                 if (!isset($input['password']) && !isset($input['realname']) && !isset($input['email'])){
-                    echo "nothing changed";
+                    echo "Nothing Changed: ";
                 }
             }
 
