@@ -46,7 +46,10 @@ class UserAccountController extends Controller
 
     public function destroy(Request $request, $id)
     {
-        //Get the user
+        /*
+         * Since it is the 'sagename' that is going to be a unique identifier only changed through ME,
+         * if it doesn't match the id they are sending to request the change, I'll boot it.
+         */
         $userAccount = User::find($id);
         $input = $request->input();
         if ($userAccount->sagename != $input['sagename'])
