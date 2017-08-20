@@ -44,18 +44,25 @@ class UserAccountController extends Controller
         return $this->response->withItem($userAccount, new  UserAccountTransformer());
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //Get the user
         $userAccount = User::find($id);
-        if (!$userAccount) {
-            return $this->response->errorNotFound('User Not Found');
+        $input = $request->input();
+        if ($userAccount->sagename != $input['sagename'])
+        {
+            return $this->response->errorNotFound('You are not allowed to delete this account. If you wish to change your sagename, please contact Admin to change your sagename at https://www.netdoodler.com');
         }
+        else {
+            if (!$userAccount) {
+                return $this->response->errorNotFound('User Not Found');
+            }
 
-        if($userAccount->delete()) {
-            return $this->response->withItem($userAccount, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not delete a user');
+            if ($userAccount->delete()) {
+                return $this->response->withItem($userAccount, new  UserAccountTransformer());
+            } else {
+                return $this->response->errorInternalError('Could not delete a user');
+            }
         }
 
     }
