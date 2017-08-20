@@ -125,6 +125,7 @@ class UserAccountController extends Controller
             else {
                 if (isset($input['password']) && (isset($input['realname']) | isset($input['email']))){
                     return $this->response->errorInternalError('Please only edit one item at a time with your requests.');
+
                 }
                 else {
                     if (isset($input['password'])) {
@@ -137,10 +138,6 @@ class UserAccountController extends Controller
                     }
                     if (isset($input['email'])) {
                         $userAccount->email = $request->input('email');
-                    }
-
-                    if (!isset($input['password']) && !isset($input['realname']) && !isset($input['email'])) {
-                        echo "Nothing Changed: ";
                     }
                 }
             }
