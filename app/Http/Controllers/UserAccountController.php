@@ -102,17 +102,21 @@ class UserAccountController extends Controller
     public function edit(Request $request,$id)
     {
         $userAccount = User::find($id);
-        /*Later Work Goal: To make sure they can only change their own account
-        *1. Do a get userID based off their auth token
-         * 2. Make sure it matches the incoming $id or refuse request
+
+        /*
+         * Since it is the 'sagename' that is going to be a unique identifier only changed through ME,
+         * if it doesn't match the id they are sending to request the change, I'll boot it.
+         *
          */
         $input = $request->input();
         echo var_dump($input);
-        if(isset($input['sagename'])) {
-
-            echo "test";
+        if ($userAccount->sagename != $input['sagename'])
+        {
+            return $this->response->errorNotFound('You are not allowed to edit this account.');
         }
-        
+
+
+
         if (!$userAccount) {
             return $this->response->errorNotFound('User Account ID Not Found');
         } else {
