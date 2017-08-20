@@ -110,11 +110,11 @@ class UserAccountController extends Controller
          */
         $input = $request->input();
         echo var_dump($input);
-        $input['sagename'] = 'somethingelse';
+        //$input['sagename'] = 'somethingelse';
 
         if ($userAccount->sagename != $input['sagename'])
         {
-            echo $userAccount->sagename ;
+            //echo $userAccount->sagename ;
             return $this->response->errorNotFound('You are not allowed to edit this account.');
         }
         else {
