@@ -102,6 +102,16 @@ class UserAccountController extends Controller
     public function edit(Request $request,$id)
     {
         $userAccount = User::find($id);
+        /*Later Work Goal: To make sure they can only change their own account
+        *1. Do a get userID based off their auth token
+         * 2. Make sure it matches the incoming $id or refuse request
+         */
+        $input = $request->input();
+        echo var_dump($input);
+        if(isset($input['sagename'])) {
+
+
+        }
         if (!$userAccount) {
             return $this->response->errorNotFound('User Account ID Not Found');
         } else {
@@ -117,72 +127,5 @@ class UserAccountController extends Controller
         } else {
             return $this->response->errorInternalError('Could not create a user account');
         }
-    }
-
-
-    public function createOAuthUser(Request $request)
-    {
-
-        /*
-         $v = validator($request->only('email', 'realname', 'password', 'sagename'), [
-             'realname' => 'required|string|max:255',
-             'sagename' => 'required|string|max:255',
-             'email' => 'required|string|email|max:255|unique:users',
-             'password' => 'required|string|min:6',
-         ]);
-
-         if ($v->fails()) {
-             return response()->json($v->errors()->all(), 400);
-         }
-
-         $data = request()->only('email', 'realname', 'password', 'sagename');
-
-         \App\User::create([
-             'realname' => $data['realname'],
-             'sagename' => $data['sagename'],
-             'email' => $data['email'],
-             'password' => bcrypt($data['password']),
-         ]);
-
-         $client = \Laravel\Passport\Client::where('password_client', 1)->first();
-
-         $request->request->add([
-             'grant_type' => 'password',
-             'client_id' => $client->id,
-             'client_secret' => $client->secret,
-             'username' => $data['sagename'],
-             'password' => $data['password'],
-             'scope' => null,
-         ]);
-
-         // Fire off the internal request.
-
-         $request2 = Request::create('oauth/token', 'POST');
-         $request2->header('Access-Control-Allow-Origin', '*');
-         Route::dispatch($request2);
-         $response = Route::dispatch($request2);
-         return($response);
-     }
-     /*csrf_token()
-     public function showRoutes()
-     {
-         $routeCollection = Route::getRoutes();
-
-         echo "<table style='width:100%'>";
-         echo "<tr>";
-         echo "<td width='10%'><h4>HTTP Method</h4></td>";
-         echo "<td width='10%'><h4>Route</h4></td>";
-         echo "<td width='80%'><h4>Corresponding Action</h4></td>";
-         echo "</tr>";
-         foreach ($routeCollection as $value) {
-             echo "<tr>";
-             echo "<td>" . $value->getMethods()[0] . "</td>";
-             echo "<td>" . $value->getPath() . "</td>";
-             echo "<td>" . $value->getActionName() . "</td>";
-             echo "</tr>";
-         }
-         echo "</table>";
-     }
- */
     }
 }

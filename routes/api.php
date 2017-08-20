@@ -34,50 +34,11 @@ Route::post('account/edit/{id}','UserAccountController@edit')->middleware('auth:
 
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
 
+/*
 Route::get('/user/{user}', function (App\user $user) {
     return $user->email;
 });
-
-/*
-Route::get('/getCSRF', function () {
-    return csrf_token();
-});
 */
-/*
-//https://stackoverflow.com/questions/39525968/laravels-5-3-passport-and-api-routes/40393694#40393694
-//if I get no upstream error do composer dump-autoload
-Route::post('/register-user', function (Request $request) {
-
-    $name     = $request->input('name');
-    $email    = $request->input('email');
-    $password = $request->input('password');
-
-    // save new user
-    $user = \App\User::create([
-        'name'     => $name,
-        'email'    => $email,
-        'password' => bcrypt($password),
-    ]);
-
-
-    // create oauth client
-    $oauth_client = \App\OauthClient::create([
-        'user_id'                => $user->id,
-        'id'                     => $email,
-        'name'                   => $name,
-        'secret'                 => base64_encode(hash_hmac('sha256',$password, 'secret', true)),
-        'password_client'        => 1,
-        'personal_access_client' => 0,
-        'redirect'               => '',
-        'revoked'                => 0,
-    ]);
-
-
-    return [
-        'message' => 'user successfully created.'
-    ];
-});
-
 
 /*
  * 4 types of Oauth grants + "Refresh Grant"
