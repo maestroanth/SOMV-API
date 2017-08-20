@@ -137,7 +137,7 @@ class UserAccountController extends Controller
                 }
 
                 if (!isset($input['password']) && !isset($input['realname']) && !isset($input['email'])){
-                    return $this->response->withItem("nothing changed");
+                    return $this->response->withText("nothing changed");
                 }
             }
 
