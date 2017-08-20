@@ -51,7 +51,7 @@ class UserAccountController extends Controller
          * Since it is the 'sagename' that is going to be a unique identifier only changed through ME,
          * if it doesn't match the id they are sending to request the change, I'll boot it.
          *
-         * The Real Name is also a requirement to make double sure.
+         * The Real Name is also a requirement to make double sure they want to delete account.
          *
          */
         //Get the user
