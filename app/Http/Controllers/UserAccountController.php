@@ -125,13 +125,15 @@ class UserAccountController extends Controller
             else {
 
                 if (isset($input['password'])){
+                    echo 'password';
                     $userAccount->password = $request->input('password');
                 }
                 if (isset($input['realname'])){
-                    $userAccount->password = $request->input('realname');
+                    echo 'realname';
+                    $userAccount->realname = $request->input('realname');
                 }
                 if (isset($input['email'])){
-                    $userAccount->password = $request->input('email');
+                    $userAccount->email = $request->input('email');
                 }
             }
 
