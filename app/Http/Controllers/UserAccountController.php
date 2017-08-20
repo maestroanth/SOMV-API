@@ -108,8 +108,9 @@ class UserAccountController extends Controller
          * if it doesn't match the id they are sending to request the change, I'll boot it.
          *
          * This is custom
-         * programmed to only edit one input at a time,
+         * programmed to only edit one input at a time other than sagename or id,
          * so only one input should be sent through request with correct key:entry JSON
+         * along with the user's sage name and PK id
          *
          */
         $input = $request->input();
