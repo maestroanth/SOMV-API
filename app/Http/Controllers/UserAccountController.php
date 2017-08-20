@@ -129,7 +129,8 @@ class UserAccountController extends Controller
                 }
                 else {
                     if (isset($input['password'])) {
-                        $userAccount->password = $request->input('password');
+                        $pass1 =$request->input('password');
+                        $userAccount->password = bcrypt($pass1);
                     }
                     if (isset($input['realname'])) {
                         $userAccount->realname = $request->input('realname');
