@@ -123,21 +123,25 @@ class UserAccountController extends Controller
                 return $this->response->errorNotFound('You are not allowed to edit this account. If you wish to change your sagename, please contact Admin to change your sagename at https://www.netdoodler.com');
             }
             else {
+                if (isset($input['password']) && isset($input['realname']) && isset($input['email'])){
+                    return $this->response->errorInternalError('Please only edit one item at a time with your requests.');
+                }
+                else {
+                    if (isset($input['password'])) {
+                        echo 'password';
+                        $userAccount->password = $request->input('password');
+                    }
+                    if (isset($input['realname'])) {
+                        echo 'realname';
+                        $userAccount->realname = $request->input('realname');
+                    }
+                    if (isset($input['email'])) {
+                        $userAccount->email = $request->input('email');
+                    }
 
-                if (isset($input['password'])){
-                    echo 'password';
-                    $userAccount->password = $request->input('password');
-                }
-                if (isset($input['realname'])){
-                    echo 'realname';
-                    $userAccount->realname = $request->input('realname');
-                }
-                if (isset($input['email'])){
-                    $userAccount->email = $request->input('email');
-                }
-
-                if (!isset($input['password']) && !isset($input['realname']) && !isset($input['email'])){
-                    echo "Nothing Changed: ";
+                    if (!isset($input['password']) && !isset($input['realname']) && !isset($input['email'])) {
+                        echo "Nothing Changed: ";
+                    }
                 }
             }
 
