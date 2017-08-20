@@ -107,27 +107,31 @@ class UserAccountController extends Controller
          * Since it is the 'sagename' that is going to be a unique identifier only changed through ME,
          * if it doesn't match the id they are sending to request the change, I'll boot it.
          *
+         * This is custom
+         * programmed to only edit one input at a time,
+         * so only one input should be sent through request with correct key:entry JSON
+         *
          */
         $input = $request->input();
-        echo var_dump($input);
-        //$input['sagename'] = 'somethingelse';
+        if (!$userAccount) {
+            return $this->response->errorNotFound('User Account ID Not Found');
+        } else {
+            if ($userAccount->sagename != $input['sagename'])
+            {
+                //echo $userAccount->sagename ;
+                return $this->response->errorNotFound('You are not allowed to edit this account.');
+            }
+            else {
 
-        if ($userAccount->sagename != $input['sagename'])
-        {
-            //echo $userAccount->sagename ;
-            return $this->response->errorNotFound('You are not allowed to edit this account.');
-        }
-        else {
-
-
-            if (!$userAccount) {
-                return $this->response->errorNotFound('User Account ID Not Found');
-            } else {
-                $userAccount->id = $id;
-                $userAccount->password = $request->input('password');
-                $userAccount->sagename = $request->input('sagename');
-                $userAccount->realname = $request->input('realname');
-                $userAccount->email = $request->input('email');
+                if (isset($input['password'])){
+                    $userAccount->password = $request->input('password');
+                }
+                if (isset($input['realname'])){
+                    $userAccount->password = $request->input('realname');
+                }
+                if (isset($input['email'])){
+                    $userAccount->password = $request->input('email');
+                }
             }
 
             if ($userAccount->save()) {
