@@ -56,11 +56,12 @@ class UserAccountController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
+        $input = $request->input();
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         }
         else {
-            $input = $request->input();
+
             if ($userAccount->sagename != $input['sagename']) {//sagename check
                 return $this->response->errorNotFound('You are not allowed to delete this account. If you wish to change your sagename, please contact Admin to change your sagename at https://www.netdoodler.com');
             } else if ($userAccount->realname != $input['realname']) {//realname check
