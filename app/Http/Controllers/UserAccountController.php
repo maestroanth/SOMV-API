@@ -91,15 +91,15 @@ class UserAccountController extends Controller
             'realname' => $request->input('realname'),
             'email' => $request->input('email'),
         );
-        /*
+
         Validator::make($userAccount, [
-            'sagename' => 'required|string|max:255',
-            'realname' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'password' => 'required|string|min:6|confirmed',
+            'sagename' => 'required|string|max:255|unique:users',
+            //'realname' => 'required|string|max:255',
+            //'email' => 'required|string|email|max:255',
+            //'password' => 'required|string|min:6|confirmed',
+           // 'password' => 'required|string|min:6|confirmed',
         ]);
-        */
+
 
         $responseItem = User::create([
             'sagename' => $userAccount['sagename'],
