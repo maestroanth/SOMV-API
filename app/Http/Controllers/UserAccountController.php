@@ -92,6 +92,7 @@ class UserAccountController extends Controller
             'email' => $request->input('email'),
         );
         $sagenameToCompare = User::find($request->input('sagename'));
+        echo $sagenameToCompare;
         if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
         {
             return $this->response->errorInternalError('Sorry, someone already has this sagename.');
