@@ -93,11 +93,11 @@ class UserAccountController extends Controller
         );
         //$sagenameToCompare = User::find($request->input('sagename'));
        // echo "sagename to compare: TESTESTETSETEST" + $sagenameToCompare;
-        if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
+        //if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
         {
-            return $this->response->errorInternalError('Sorry, someone already has this sagename.');
-        }
-        else {
+         //   return $this->response->errorInternalError('Sorry, someone already has this sagename.');
+        //}
+        //else {
             /*
             Validator::make($userAccount, [
                 'sagename' => 'required|string|max:255|unique:users',
