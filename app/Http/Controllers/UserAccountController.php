@@ -91,8 +91,13 @@ class UserAccountController extends Controller
             'realname' => $request->input('realname'),
             'email' => $request->input('email'),
         );
-        $sagenameToCompare = User::find($request->input('sagename'));
-        echo $sagenameToCompare;
+        $sagenameToCompare = $request->input('sagename');
+        if (User::where('sagename',$sagenameToCompare) -> first())
+        {
+
+            echo 'found username';
+        }
+
         //$sagenameToCompare = );
        // echo "sagename to compare: TESTESTETSETEST" + $sagenameToCompare;
         //if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
