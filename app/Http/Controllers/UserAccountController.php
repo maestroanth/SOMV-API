@@ -96,7 +96,7 @@ class UserAccountController extends Controller
         //if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
         {
          //   return $this->response->errorInternalError('Sorry, someone already has this sagename.');
-        //}
+        ///}
         //else {
             /*
             Validator::make($userAccount, [
