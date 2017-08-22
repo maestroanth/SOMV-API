@@ -91,29 +91,34 @@ class UserAccountController extends Controller
             'realname' => $request->input('realname'),
             'email' => $request->input('email'),
         );
+        if($sagenameToCompare = User::find($request->input('sagename')))//compares if sage name already exists
+        {
+            return $this->response->errorInternalError('Sorry, someone already has this sagename.');
+        }
+        else {
+            /*
+            Validator::make($userAccount, [
+                'sagename' => 'required|string|max:255|unique:users',
+                //'realname' => 'required|string|max:255',
+                //'email' => 'required|string|email|max:255',
+                //'password' => 'required|string|min:6|confirmed',
+               // 'password' => 'required|string|min:6|confirmed',
+            ]);
+            */
 
-        Validator::make($userAccount, [
-            'sagename' => 'required|string|max:255|unique:users',
-            //'realname' => 'required|string|max:255',
-            //'email' => 'required|string|email|max:255',
-            //'password' => 'required|string|min:6|confirmed',
-           // 'password' => 'required|string|min:6|confirmed',
-        ]);
+            $responseItem = User::create([
+                'sagename' => $userAccount['sagename'],
+                'realname' => $userAccount['realname'],
+                'email' => $userAccount['email'],
+                'password' => bcrypt($userAccount['password']),
+            ]);
 
 
-        $responseItem = User::create([
-            'sagename' => $userAccount['sagename'],
-            'realname' => $userAccount['realname'],
-            'email' => $userAccount['email'],
-            'password' => bcrypt($userAccount['password']),
-        ]);
-
-
-
-        if ($responseItem->save()) {
-            return $this->response->withItem($responseItem, new  UserAccountTransformer());
-        } else {
-            return $this->response->errorInternalError('Could not create a user account');
+            if ($responseItem->save()) {
+                return $this->response->withItem($responseItem, new  UserAccountTransformer());
+            } else {
+                return $this->response->errorInternalError('Could not create a user account');
+            }
         }
 
     }
