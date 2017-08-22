@@ -79,7 +79,8 @@ class UserAccountController extends Controller
         }
     }
 
-    public function store(Request $request)  {
+    public function store(Request $request)
+    {
 //
         $responseItem = new User;
         $client = new Client();
@@ -92,19 +93,12 @@ class UserAccountController extends Controller
             'email' => $request->input('email'),
         );
         $sagenameToCompare = $request->input('sagename');
-        if (User::where('sagename',$sagenameToCompare) -> first())
-        {
-
-            echo 'found username';
-        }
-
-        //$sagenameToCompare = );
-       // echo "sagename to compare: TESTESTETSETEST" + $sagenameToCompare;
-        //if($sagenameToCompare == $request->input('sagename'))//compares if sage name already exists
-        {
-         //   return $this->response->errorInternalError('Sorry, someone already has this sagename.');
-        ///}
-        //else {
+        if (User::where('sagename', $sagenameToCompare)->first()) {
+            return $this->response->errorInternalError('Sorry, someone already has this sagename.');
+        } else {
+            //
+            ///}
+            //else {
             /*
             Validator::make($userAccount, [
                 'sagename' => 'required|string|max:255|unique:users',
@@ -129,7 +123,7 @@ class UserAccountController extends Controller
                 return $this->response->errorInternalError('Could not create a user account');
             }
         }
-
+    
     }
 
     public function edit(Request $request,$id)
