@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTooltipsTable extends Migration
+class CreateRacesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,11 @@ class CreateTooltipsTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('tooltips', function (Blueprint $table) {
+            $table->string('id', 100)->primary();
+            $table->string('name', 100);
+            $table->text('description')->nullable();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateTooltipsTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('tooltips');
     }
 }
