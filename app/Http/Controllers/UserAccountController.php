@@ -93,9 +93,9 @@ class UserAccountController extends Controller
             'email' => $request->input('email'),
         );
         $sagenameToCompare = $request->input('sagename');
-        if (User::where('sagename', $sagenameToCompare)->first()) {
-            return $this->response->errorInternalError('Sorry, someone already has this sagename.');
-        } else {
+            if (User::where('sagename', $sagenameToCompare)->first()) {
+                return $this->response->errorInternalError('Sorry, someone already has this sagename.');
+            } else {
             //
             ///}
             //else {
@@ -123,7 +123,7 @@ class UserAccountController extends Controller
                 return $this->response->errorInternalError('Could not create a user account');
             }
         }
-    
+
     }
 
     public function edit(Request $request,$id)
