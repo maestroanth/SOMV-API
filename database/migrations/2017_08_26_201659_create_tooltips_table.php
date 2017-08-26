@@ -22,7 +22,7 @@ class CreateRacesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
+     *dfdf
      * @return void
      */
     public function down()
