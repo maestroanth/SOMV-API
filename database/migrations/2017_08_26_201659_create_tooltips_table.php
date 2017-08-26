@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRacesTable extends Migration
+class CreateTooltipsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -22,7 +22,7 @@ class CreateRacesTable extends Migration
 
     /**
      * Reverse the migrations.
-     *dfdf
+     *
      * @return void
      */
     public function down()
