@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Tooltip;
 use EllipseSynergie\ApiResponse\Contracts\Response;
-use App\User;
 use App\Transformer\UserAccountTransformer;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
@@ -20,10 +19,15 @@ class ToolTipController extends Controller
 {
     protected $response;
 
-    protected $table = 'races';
 
-    public function getAllRaceData()
+    public function __construct(Response $response)
     {
-       // return $posts = Blog::all();
+        $this->response = $response;
+    }
+
+    public function getAllTooltipData()
+    {
+        $this->response = Tooltip::all();
+       return $this->response;
     }
 }
