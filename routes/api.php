@@ -30,6 +30,9 @@ Route::post('account/delete/{id}','UserAccountController@destroy')->middleware('
 Route::post('account/post','UserAccountController@store')->middleware('client');
 Route::post('account/edit/{id}','UserAccountController@edit')->middleware('auth:api');
 
+Route::get('races','RaceDataController@getAllRaceData')->middleware('auth:api');
+Route::get('tooltips','ToolTipController@getAllTooltipData')->middleware('auth:api');
+
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
