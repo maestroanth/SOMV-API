@@ -4,8 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Race extends Model
+class Tooltip extends Model
 {
-    protected $table = 'races';
+    protected $table = 'tooltips';
     public $timestamps = false;
 }
