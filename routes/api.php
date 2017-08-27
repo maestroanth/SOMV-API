@@ -32,6 +32,7 @@ Route::post('account/edit/{id}','UserAccountController@edit')->middleware('auth:
 
 Route::get('races','RaceDataController@getAllRaceData')->middleware('auth:api');
 Route::get('tooltips/{category}','ToolTipController@getTooltipData')->middleware('auth:api');
+Route::get('race/{id}','RaceDataController@getRaceData')->middleware('auth:api');
 
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 

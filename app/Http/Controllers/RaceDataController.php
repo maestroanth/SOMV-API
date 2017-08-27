@@ -22,4 +22,10 @@ class RaceDataController extends Controller
         $this->response = Race::all();
         return $this->response;
     }
+
+    public function getRaceData($id)
+    {
+        $this->response = Race::where('id', $id)->first();
+        return $this->response;
+    }
 }
