@@ -25,9 +25,9 @@ class ToolTipController extends Controller
         $this->response = $response;
     }
 
-    public function getAllTooltipData()
+    public function getTooltipData($category)
     {
-        $this->response = Tooltip::all();
+        $this->response = Tooltip::where('category', $category);
        return $this->response;
     }
 }
