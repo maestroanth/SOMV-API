@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Race;
 use App\User;
 use EllipseSynergie\ApiResponse\Contracts\Response;
-
+use App\Transformer\UserAccountTransformer;
 
 class RaceDataController extends Controller
 {
