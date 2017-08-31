@@ -52,6 +52,7 @@ class RaceDataController extends Controller
                 'Chosen_Image' => $request->input('Chosen_Image'),
                 'Level' => 1,
                 'Sage_Created' => 1,
+                'FK_Race' => $request->input('FK_Race'),
 
             );
             $this->response = User::where('id', $id)->first();
