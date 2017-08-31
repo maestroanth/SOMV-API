@@ -54,8 +54,8 @@ class RaceDataController extends Controller
                 'Sage_Created' => 1,
 
             );
-
-            return $this->response->withItem($userAccount);
+            $this->response = User::where('id', $id)->first();
+            return $this->response;
         }
     }
 }
