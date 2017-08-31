@@ -30,4 +30,31 @@ class RaceDataController extends Controller
         return $this->response;
     }
 
+    public function storeNewRaceData(Request $request, $id)
+    {
+        $userAccount = User::find($id);
+
+        if(!$userAccount)
+        {
+            return $this->response->errorInternalError('Could not create your sage, please try re-logging');
+        }
+        else {
+
+
+            $userAccount = array(
+                'Intuition' => $request->input('Intuition'),
+                'Ingenuity' => $request->input('Ingenuity'),
+                'Inquisitiveness' => $request->input('Inquisitiveness'),
+                'Intelligence' => $request->input('Intelligence'),
+                'Invigoration' => $request->input('Invigoration'),
+                'Insanity_Control' => $request->input('Insanity_Control'),
+                'Chosen_Image' => $request->input('Chosen_Image'),
+                'Level' => 1,
+                'Sage_Created' => 1,
+
+            );
+
+            return $this->response->withItem($userAccount, new  UserAccountTransformer());
+        }
+    }
 }
