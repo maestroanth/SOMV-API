@@ -29,9 +29,4 @@ class RaceDataController extends Controller
         return $this->response;
     }
 
-    public function getAllToolTipData()
-    {
-        $this->response = Tooltip::all();
-        return $this->response;
-    }
 }
