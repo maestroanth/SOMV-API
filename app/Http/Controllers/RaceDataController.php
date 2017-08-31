@@ -40,21 +40,17 @@ class RaceDataController extends Controller
             return $this->response->errorInternalError('Could not create your sage, please try re-logging');
         }
         else {
-            try {
-                $userAccount->FK_Race = $request->input('FK_Race');
-                $userAccount->Intuition = $request->input('Intuition');
-                $userAccount->Ingenuity = $request->input('Ingenuity');
-                $userAccount->Inquisitiveness = $request->input('Inquisitiveness');
-                $userAccount->Intelligence = $request->input('Intelligence');
-                $userAccount->Invigoration = $request->input('Invigoration');
-                $userAccount->Insanity_Control = $request->input('Insanity_Control');
-                $userAccount->Chosen_Image = $request->input('Chosen_Image');
-                $userAccount->Level = 1;
-                $userAccount->Sage_Created = 1;
-            }
-            catch (Exception $e) {
-                $this->response = "Something went wrong while storing into DB. Sowwy ;P";
-            }
+
+            $userAccount->FK_Race = $request->input('FK_Race');
+            $userAccount->Intuition = $request->input('Intuition');
+            $userAccount->Ingenuity = $request->input('Ingenuity');
+            $userAccount->Inquisitiveness = $request->input('Inquisitiveness');
+            $userAccount->Intelligence = $request->input('Intelligence');
+            $userAccount->Invigoration = $request->input('Invigoration');
+            $userAccount->Insanity_Control = $request->input('Insanity_Control');
+            $userAccount->Chosen_Image = $request->input('Chosen_Image');
+            $userAccount->Level = 1;
+            $userAccount->Sage_Created = 1;
 
             $this->response = User::where('id', $id)->first();
             return $this->response;
