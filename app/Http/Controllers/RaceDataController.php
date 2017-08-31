@@ -28,4 +28,10 @@ class RaceDataController extends Controller
         $this->response = Race::where('id', $id)->first();
         return $this->response;
     }
+
+    public function getAllToolTipData()
+    {
+        $this->response = Tooltip::all();
+        return $this->response;
+    }
 }
