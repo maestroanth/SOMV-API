@@ -34,7 +34,18 @@ class RaceDataController extends Controller
     public function storeNewRaceData(Request $request, $id)
     {
         $userAccount = User::find($id);
+        $userAccount->FK_Race = $request->input('FK_Race');
+        $userAccount->Intuition = $request->input('Intuition');
+        $userAccount->Ingenuity = $request->input('Ingenuity');
+        $userAccount->Inquisitiveness = $request->input('Inquisitiveness');
+        $userAccount->Intelligence = $request->input('Intelligence');
+        $userAccount->Invigoration = $request->input('Invigoration');
+        $userAccount->Insanity_Control = $request->input('Insanity_Control');
+        $userAccount->Chosen_Image = $request->input('Chosen_Image');
+        $userAccount->Level = 1;
+        $userAccount->Sage_Created = 1;
 
+        $this->response = User::where('id', $id)->first();
         if(!$userAccount)
         {
             return $this->response->errorInternalError('Could not create your sage, please try re-logging');
