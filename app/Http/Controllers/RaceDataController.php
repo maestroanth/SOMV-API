@@ -55,7 +55,7 @@ class RaceDataController extends Controller
 
             );
 
-            return $this->response->withItem($userAccount, new  UserAccountTransformer());
+            return $this->response->withItem($userAccount);
         }
     }
 }
