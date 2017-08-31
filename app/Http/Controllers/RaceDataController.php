@@ -25,6 +25,7 @@ class RaceDataController extends Controller
 
     public function getRaceData($id)
     {
+        $id = (int)$id;
         $this->response = Race::where('id', $id)->first();
         return $this->response;
     }
