@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Race;
+use App\User;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 
 
