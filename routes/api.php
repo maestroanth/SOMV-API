@@ -31,8 +31,11 @@ Route::post('account/post','UserAccountController@store')->middleware('client');
 Route::post('account/edit/{id}','UserAccountController@edit')->middleware('auth:api');
 
 Route::get('races','RaceDataController@getAllRaceData')->middleware('auth:api');
-Route::get('tooltips/{category}','ToolTipController@getToolTipData')->middleware('auth:api');
 Route::get('race/{id}','RaceDataController@getRaceData')->middleware('auth:api');
+
+Route::get('tooltips/{category}','ToolTipController@getToolTipData')->middleware('auth:api');
+Route::get('tooltips','ToolTipController@getAllToolTipData')->middleware('auth:api');
+
 
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
 
