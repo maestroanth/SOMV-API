@@ -52,7 +52,7 @@ class RaceDataController extends Controller
             $userAccount->Chosen_Image = $request->input('Chosen_Image');
             $userAccount->Level = 1;
             $userAccount->Sage_Created = 1;
-            if ($userAccount->save()) {
+            if ($userAccount->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
                 return $this->response = User::where('id', $id)->first();
             } else {
                 return $this->response->errorInternalError('Could not create a sage profile.');
