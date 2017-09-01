@@ -22,7 +22,8 @@ class User extends Authenticatable
     ];
 
     protected $fillable = [
-        'sagename', 'realname', 'email', 'password',
+        'sagename', 'realname', 'email', 'password', 'Intuition','Intelligence','Ingenuity','Insanity_Control','Invigoration',
+        'Inquisitiveness', 'XP', 'Energy', 'Chosen_Image', 'FK_Race',
     ];
 
     /**
