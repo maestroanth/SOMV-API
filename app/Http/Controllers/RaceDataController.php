@@ -42,21 +42,27 @@ class RaceDataController extends Controller
         }
         else {
 
-            $userAccount->FK_Race = $request->input('FK_Race');
-            $userAccount->Intuition = $request->input('Intuition');
-            $userAccount->Ingenuity = $request->input('Ingenuity');
-            $userAccount->Inquisitiveness = $request->input('Inquisitiveness');
-            $userAccount->Intelligence = $request->input('Intelligence');
-            $userAccount->Invigoration = $request->input('Invigoration');
-            $userAccount->Insanity_Control = $request->input('Insanity_Control');
-            $userAccount->Chosen_Image = $request->input('Chosen_Image');
-            $userAccount->Level = 1;
-            $userAccount->Sage_Created = 1;
-            if ($userAccount->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
-                return $this->response = User::where('id', $id)->first();
-            } else {
+            try {
+                $userAccount->FK_Race = $request->input('FK_Race');
+                $userAccount->Intuition = $request->input('Intuition');
+                $userAccount->Ingenuity = $request->input('Ingenuity');
+                $userAccount->Inquisitiveness = $request->input('Inquisitiveness');
+                $userAccount->Intelligence = $request->input('Intelligence');
+                $userAccount->Invigoration = $request->input('Invigoration');
+                $userAccount->Insanity_Control = $request->input('Insanity_Control');
+                $userAccount->Chosen_Image = $request->input('Chosen_Image');
+                $userAccount->Level = 1;
+                $userAccount->Sage_Created = 1;
+                if ($userAccount->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
+                    return $this->response = User::where('id', $id)->first();
+                } else {
+                    return $this->response->errorInternalError('Could not create a sage profile.');
+                }
+            }
+            catch (Exception $e){
                 return $this->response->errorInternalError('Could not create a sage profile.');
             }
+
         }
     }
 }
