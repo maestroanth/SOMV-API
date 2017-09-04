@@ -421,7 +421,7 @@ class ComposerStaticInit9b68b7bbb0014473eea98535f440eb98
         'CreateOauthRefreshTokensTable' => __DIR__ . '/../..' . '/database/migrations/old/2016_06_01_000003_create_oauth_refresh_tokens_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/old/2014_10_12_100000_create_password_resets_table.php',
         'CreateRacesTable' => __DIR__ . '/../..' . '/database/migrations/old/2017_08_26_193425_create_races_table.php',
-        'CreateTooltipsTable' => __DIR__ . '/../..' . '/database/migrations/2017_08_26_201659_create_tooltips_table.php',
+        'CreateTooltipsTable' => __DIR__ . '/../..',
         'CreateUserAccountsTable' => __DIR__ . '/../..' . '/database/migrations/old/2014_10_12_000000_create_useraccounts_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/old/2014_10_12_000000_create_users_table.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron/AbstractField.php',

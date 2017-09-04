@@ -13,7 +13,11 @@ class CreateConceptsCategoriesTable extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('concept_categories', function (Blueprint $table) {
+            $table->string('id', 100)->primary();
+            $table->string('name', 100);
+            $table->text('description')->nullable();
+        });
     }
 
     /**
@@ -23,6 +27,6 @@ class CreateConceptsCategoriesTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('force_categories');
     }
 }
