@@ -71,13 +71,13 @@ class CardController extends Controller
 
 
                 $newCard->Concept_Name_1 = $request->input('Concept_Name_1');
-                $newCard->Concept_Str_1 = $request->input('Concept_Str_1');
+                $newCard->Concept_Str_1 = $request->input('Strength_Concept_1');
                 $newCard->Concept_Name_2 = $request->input('Concept_Name_2');
-                $newCard->Concept_Str_2 = $request->input('Concept_Str_2');
+                $newCard->Concept_Str_2 = $request->input('Strength_Concept_1');
                 $newCard->Concept_Name_3 = $request->input('Concept_Name_3');
-                $newCard->Concept_Str_3 = $request->input('Concept_Str_3');
+                $newCard->Concept_Str_3 = $request->input('Strength_Concept_1');
                 $newCard->Concept_Name_4 = $request->input('Concept_Name_4');
-                $newCard->Concept_Str_4 = $request->input('Concept_Str_4');
+                $newCard->Concept_Str_4 = $request->input('Strength_Concept_1');
 
                 $newCard->FK_Move_1 = $request->input('FK_Move_1');
                 $newCard->FK_Move_2 = $request->input('FK_Move_2');
