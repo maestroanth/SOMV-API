@@ -38,6 +38,10 @@ Route::get('tooltips','ToolTipController@getAllToolTipData')->middleware('auth:a
 
 Route::post('new-sage/{id}','RaceDataController@storeNewRaceData')->middleware('auth:api');
 //Route::get('routes','UserAccountController@showRoutes');//php artisan config:clear got routes to show in terminal
+Route::get('universe-category/{id}','CardController@getUniverse')->middleware('auth:api');
+Route::get('collection/{id}','CardController@getCardCollection')->middleware('auth:api');
+Route::post('generate-card/{id}','CardController@grantNewCard')->middleware('auth:api');
+
 
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
 
