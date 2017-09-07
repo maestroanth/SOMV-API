@@ -91,7 +91,7 @@ class CardController extends Controller
 
                 if ($newCard->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
 
-                    return $this->response = 'Congratulations, a new Universe has been added to your Multiverse!' + string($newCard);
+                    return $this->response = json_encode($this->newCard);
                 } else {
                     return $this->response->errorInternalError('Could not create new Universe card.');
                 }
