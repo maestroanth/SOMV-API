@@ -14,7 +14,7 @@ class CardController extends Controller
 {
     protected $response;
     protected $newCard;
-
+    protected $cardCollection = new array();
     public function __construct(Response $response)
     {
         $this->response = $response;
@@ -37,8 +37,8 @@ class CardController extends Controller
 
     public function getCardCollection($userID)
     {
-        //$userID = (int)$userID;
-        $this->response = json_encode(Card::where('FK_userID', $userID));
+        $this->cardCollection = Card::where('FK_userID', $userID)->get();
+        $this->response = json_encode($this->cardCollection );
         return $this->response;
     }
 
