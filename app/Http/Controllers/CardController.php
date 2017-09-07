@@ -14,7 +14,7 @@ class CardController extends Controller
 {
     protected $response;
     protected $newCard;
-    protected $cardCollection = new array();
+    protected $cardCollection;
     public function __construct(Response $response)
     {
         $this->response = $response;
