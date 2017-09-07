@@ -37,7 +37,8 @@ class CardController extends Controller
 
     public function getCardCollection($userID)
     {
-        $this->response = Card::where('FK_userID', $userID)->get();
+        $this->cardCollection = Card::where('FK_userID', $userID)->get();
+        $this->response = json_encode($this->cardCollection );
         return $this->response;
     }
 
