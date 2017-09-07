@@ -38,7 +38,7 @@ class CardController extends Controller
     public function getCardCollection($userID)
     {
         $userID = (int)$userID;
-        $this->response = Card::where('FK_userID', $userID)->all();
+        $this->response = Card::where('FK_userID', $userID);
         return $this->response;
     }
 
