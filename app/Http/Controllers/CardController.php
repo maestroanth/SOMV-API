@@ -87,7 +87,7 @@ class CardController extends Controller
 
 
                 //Step 2. Assign the FK to user
-                $newCard->FK_userID = $id;
+                $newCard->FK_userID = (int)$id;
 
                 if ($newCard->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
                     return $this->response = 'Congratulations, a new Universe has been added to your Multiverse!' + $newCard;
