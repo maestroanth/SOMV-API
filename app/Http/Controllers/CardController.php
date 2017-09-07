@@ -91,7 +91,7 @@ class CardController extends Controller
 
                 if ($newCard->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
 
-                    return $this->response = Card::where('id', $newCard->id);
+                    return $this->response = (string)Card::where('id', $newCard->id);
                 } else {
                     return $this->response->errorInternalError('Could not create new Universe card.');
                 }
