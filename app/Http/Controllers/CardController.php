@@ -56,43 +56,43 @@ class CardController extends Controller
             try {
 
                 //Step 1. Generate the Card (This will be after user modifications)
-                $this->$newCard->name = $request->input('name');
-                $this->$newCard->description = $request->input('description');
+                $newCard->name = $request->input('name');
+                $newCard->description = $request->input('description');
 
-                $this->$newCard->FK_base_universe = $request->input('FK_base_universe');
+                $newCard->FK_base_universe = $request->input('FK_base_universe');
 
-                $this->$newCard->Force_Name_1 = $request->input('Force_Name_1');
-                $this->$newCard->Strength_Force_1 = $request->input('Strength_Force_1');
-                $this->$newCard->Force_Name_2 = $request->input('Force_Name_2');
-                $this->$newCard->Strength_Force_2 = $request->input('Strength_Force_2');
-                $this->$newCard->Force_Name_3 = $request->input('Force_Name_3');
-                $this->$newCard->Strength_Force_3 = $request->input('Strength_Force_3');
-                $this->$newCard->Force_Name_4 = $request->input('Force_Name_4');
-                $this->$newCard->Strength_Force_4 = $request->input('Strength_Force_4');
+                $newCard->Force_Name_1 = $request->input('Force_Name_1');
+                $newCard->Strength_Force_1 = $request->input('Strength_Force_1');
+                $newCard->Force_Name_2 = $request->input('Force_Name_2');
+                $newCard->Strength_Force_2 = $request->input('Strength_Force_2');
+                $newCard->Force_Name_3 = $request->input('Force_Name_3');
+                $newCard->Strength_Force_3 = $request->input('Strength_Force_3');
+                $newCard->Force_Name_4 = $request->input('Force_Name_4');
+                $newCard->Strength_Force_4 = $request->input('Strength_Force_4');
 
 
-                $this->$newCard->Concept_Name_1 = $request->input('Concept_Name_1');
-                $this->$newCard->Strength_Concept_1 = $request->input('Strength_Concept_1');
-                $this->$newCard->Concept_Name_2 = $request->input('Concept_Name_2');
-                $this->$newCard->Strength_Concept_2 = $request->input('Strength_Concept_2');
-                $this->$newCard->Concept_Name_3 = $request->input('Concept_Name_3');
-                $this->$newCard->Strength_Concept_3 = $request->input('Strength_Concept_3');
-                $this->$newCard->Concept_Name_4 = $request->input('Concept_Name_4');
-                $this->$newCard->Strength_Concept_4 = $request->input('Strength_Concept_4');
+                $newCard->Concept_Name_1 = $request->input('Concept_Name_1');
+                $newCard->Strength_Concept_1 = $request->input('Strength_Concept_1');
+                $newCard->Concept_Name_2 = $request->input('Concept_Name_2');
+                $newCard->Strength_Concept_2 = $request->input('Strength_Concept_2');
+                $newCard->Concept_Name_3 = $request->input('Concept_Name_3');
+                $newCard->Strength_Concept_3 = $request->input('Strength_Concept_3');
+                $newCard->Concept_Name_4 = $request->input('Concept_Name_4');
+                $newCard->Strength_Concept_4 = $request->input('Strength_Concept_4');
 
-                $this->$newCard->FK_Move_1 = $request->input('FK_Move_1');
-                $this->$newCard->FK_Move_2 = $request->input('FK_Move_2');
-                $this->$newCard->FK_Move_3 = $request->input('FK_Move_3');
-                $this->$newCard->FK_Move_4 = $request->input('FK_Move_4');
-                $this->$newCard->FK_Move_Ultimate = $request->input('FK_Move_Ultimate');
+                $newCard->FK_Move_1 = $request->input('FK_Move_1');
+                $newCard->FK_Move_2 = $request->input('FK_Move_2');
+                $newCard->FK_Move_3 = $request->input('FK_Move_3');
+                $newCard->FK_Move_4 = $request->input('FK_Move_4');
+                $newCard->FK_Move_Ultimate = $request->input('FK_Move_Ultimate');
 
 
                 //Step 2. Assign the FK to user
-                $this->$newCard->FK_userID = $id;
+                $newCard->FK_userID = $id;
 
-                if ($this->$newCard->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
+                if ($newCard->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
 
-                    return $this->response = json_encode($this->newCard);
+                    return $this->response = json_encode($newCard);
                 } else {
                     return $this->response->errorInternalError('Could not create new Universe card.');
                 }
