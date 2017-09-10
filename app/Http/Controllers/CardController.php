@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Card;
 use App\Universe;
 use App\Move;
+use App\User;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\Transformer\UserAccountTransformer;
 
