@@ -41,8 +41,7 @@ Route::post('new-sage/{id}','RaceDataController@storeNewRaceData')->middleware('
 Route::get('universe-category/{id}','CardController@getUniverse')->middleware('auth:api');
 Route::get('collection/{id}','CardController@getCardCollection')->middleware('auth:api');
 Route::post('generate-card/{id}','CardController@grantNewCard')->middleware('auth:api');
-
-
+Route::get('moves','CardController@getAllMoves')->middleware('auth:api');
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
 
 /*

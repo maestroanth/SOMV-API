@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Card;
 use App\Universe;
-use App\User;
+use App\Move;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\Transformer\UserAccountTransformer;
 
@@ -24,6 +24,12 @@ class CardController extends Controller
     public function getAllUniverses()
     {
         $this->response = Universe::all();
+        return $this->response;
+    }
+
+    public function getAllMoves()
+    {
+        $this->response = Move::all();
         return $this->response;
     }
 
