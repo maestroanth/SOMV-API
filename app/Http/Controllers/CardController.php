@@ -122,7 +122,7 @@ class CardController extends Controller
 
         $totalEnergy = 0;
 
-        $cardsToDelete = Card::find($id);
+        //$cardsToDelete = Card::find($id);
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         } else {
@@ -140,6 +140,7 @@ class CardController extends Controller
             if (DB::table('users')->whereIn('id', $ids_to_delete)->delete()) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
+                $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
             }
         }
