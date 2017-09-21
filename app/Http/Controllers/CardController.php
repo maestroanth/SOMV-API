@@ -126,10 +126,10 @@ class CardController extends Controller
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         } else {
-
+            $cards_to_delete = json_decode($request, true);
             $ids_to_delete = array_map(function ($item) {
                 return $item['id'];
-            }, json_decode($request, true));
+            }, $cards_to_delete);
 
             for ($i = 0; $i < count($ids_to_delete); $i++) {
                 $card = Card::find('id', $ids_to_delete[$i])->get();//$i might throw error here
