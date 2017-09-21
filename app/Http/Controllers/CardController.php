@@ -127,10 +127,10 @@ class CardController extends Controller
             return $this->response->errorNotFound('User Not Found');
         } else {
             $cards_to_delete = json_decode('\'' + $request + '\'', true);
-            $this->response = json_encode($cards_to_delete);
-            /*
+            //$this->response = json_encode($cards_to_delete);
+
             $ids_to_delete = array_map(function ($item) {
-                return $item['id'];
+                return $item[0]['id'];
             }, $cards_to_delete);
 
             for ($i = 0; $i < count($ids_to_delete); $i++) {
@@ -145,7 +145,7 @@ class CardController extends Controller
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
             }
-            */
+
         }
 
         return $this->response;
