@@ -110,4 +110,40 @@ class CardController extends Controller
 
         }
     }
+
+    public function destroyCards(Request $request, $id)
+    {
+
+        /*
+         * Delete cards and then refund to User %20 Energy Value
+         */
+        //Get the user
+        $userAccount = User::find($id);
+
+        $totalEnergy = 0;
+
+        $cardsToDelete = Card::find($id);
+        if (!$userAccount) {
+            return $this->response->errorNotFound('User Not Found');
+        } else {
+
+            $ids_to_delete = array_map(function ($item) {
+                return $item['id'];
+            }, $request);
+
+            for ($i = 0; $i < count($ids_to_delete); $i++) {
+                $cardEnergy = Card::where('id', $ids_to_delete[$i])->get();//$i might throw error here
+                $totalEnergy = $totalEnergy + $cardEnergy;
+                //calculate all energy of the cards
+            }
+
+            if (DB::table('users')->whereIn('id', $ids_to_delete)->delete()) {
+
+                $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
+                //refund user ID $totalEnergy * .2
+            }
+        }
+
+        return $this->response;
+    }
 }
