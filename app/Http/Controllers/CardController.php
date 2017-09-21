@@ -132,8 +132,8 @@ class CardController extends Controller
             }, $request);
 
             for ($i = 0; $i < count($ids_to_delete); $i++) {
-                $cardEnergy = Card::where('id', $ids_to_delete[$i])->get();//$i might throw error here
-                $totalEnergy = $totalEnergy + $cardEnergy;
+                $card = Card::find('id', $ids_to_delete[$i])->get();//$i might throw error here
+                $totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
 
