@@ -126,15 +126,16 @@ class CardController extends Controller
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         } else {
+            $cards_to_delete = json_decode('\'' + $request + '\'');
+            //$this->response = json_encode($cards_to_delete);
 
-            $ids_to_delete = [];
-            foreach($request as $value){
-                $this->response = \GuzzleHttp\json_encode($value);
-                /*
-                $card = Card::find('id', $value['id'])->get();//$i might throw error here
+            $ids_to_delete = array_map(function ($item) {
+                return $item[0]['id'];
+            }, $cards_to_delete);
+
+            for ($i = 0; $i < count($ids_to_delete); $i++) {
+                $card = Card::find('id', $ids_to_delete[$i])->get();//$i might throw error here
                 $totalEnergy = $totalEnergy + $card->Energy_Value;
-                $ids_to_delete.array_push($value->input('','id'));
-                */
                 //calculate all energy of the cards
             }
 
