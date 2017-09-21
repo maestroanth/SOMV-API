@@ -129,7 +129,7 @@ class CardController extends Controller
 
             $ids_to_delete = [];
             foreach($request as $value){
-                $this->response = $value;
+                $this->response = \GuzzleHttp\json_encode($value);
                 /*
                 $card = Card::find('id', $value['id'])->get();//$i might throw error here
                 $totalEnergy = $totalEnergy + $card->Energy_Value;
