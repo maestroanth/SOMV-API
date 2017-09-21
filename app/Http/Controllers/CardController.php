@@ -129,7 +129,7 @@ class CardController extends Controller
 
             $ids_to_delete = array_map(function ($item) {
                 return $item['id'];
-            }, $request);
+            }, json_decode($request, true));
 
             for ($i = 0; $i < count($ids_to_delete); $i++) {
                 $card = Card::find('id', $ids_to_delete[$i])->get();//$i might throw error here
