@@ -129,9 +129,12 @@ class CardController extends Controller
 
             $ids_to_delete = [];
             foreach($request as $value){
+                $this->response = $this->response + var_dump($value);
+                /*
                 $card = Card::find('id', $value['id'])->get();//$i might throw error here
                 $totalEnergy = $totalEnergy + $card->Energy_Value;
                 $ids_to_delete.array_push($value->input('','id'));
+                */
                 //calculate all energy of the cards
             }
 
