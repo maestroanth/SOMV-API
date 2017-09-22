@@ -135,13 +135,6 @@ class CardController extends Controller
                 //calculate all energy of the cards
             }
 
-            if (Card::whereIn('id', $cards_to_delete)->delete()) {
-
-                $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
-                $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
-                //refund user ID $totalEnergy * .2
-
-            }
 
 
 
