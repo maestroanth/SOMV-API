@@ -129,7 +129,7 @@ class CardController extends Controller
             $cards_to_delete = json_decode($request->getContent(), true);
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
-                $card = Card::find($cards_to_delete[$i])->get();//$i might throw error here
+                $card = Card::find($cards_to_delete[$i]);//$i might throw error here
                 $totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
