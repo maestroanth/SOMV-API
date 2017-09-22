@@ -130,7 +130,7 @@ class CardController extends Controller
 
 
             $ids_to_delete = array_map(function ($item) {
-                return $item[0]['id'];
+                return $item['id'];
             }, $cards_to_delete);
 
             for ($i = 0; $i < count($ids_to_delete); $i++) {
