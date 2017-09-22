@@ -127,9 +127,8 @@ class CardController extends Controller
             return $this->response->errorNotFound('User Not Found');
         } else {
             $cards_to_delete = json_decode($request->getContent());
-            $this->response = json_encode($cards_to_delete);
 
-            /*
+
             $ids_to_delete = array_map(function ($item) {
                 return $item[0]['id'];
             }, $cards_to_delete);
@@ -148,7 +147,7 @@ class CardController extends Controller
 
             }
 
-            */
+
 
         }
 
