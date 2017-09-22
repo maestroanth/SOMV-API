@@ -129,12 +129,12 @@ class CardController extends Controller
             $cards_to_delete = json_decode($request->getContent(), true);
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
-                $card = Card::find('id', $cards_to_delete[$i])->get();//$i might throw error here
+                $card = Card::find($cards_to_delete[$i])->get();//$i might throw error here
                 $totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
 
-            if (DB::table('universe_cards')->whereIn('id', $cards_to_delete)->delete()) {
+            if (Card::whereIn('id', $cards_to_delete)->delete()) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
