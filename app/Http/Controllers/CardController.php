@@ -131,10 +131,17 @@ class CardController extends Controller
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
                 $card = Card::find($cards_to_delete[$i]);//$i might throw error here
                 $this->response = $card;
-                $totalEnergy = $totalEnergy + $card->Energy_Value;
+                //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
 
+            if (Card::whereIn('id', $cards_to_delete)->delete()) {
+
+                $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
+                $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
+                //refund user ID $totalEnergy * .2
+
+            }
 
 
 
