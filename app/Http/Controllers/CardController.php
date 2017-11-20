@@ -116,6 +116,12 @@ class CardController extends Controller
 
         /*
          * Delete cards and then refund to User %20 Energy Value
+         *
+         *
+         * Pending issue is that it only deletes the first card sent from request still 11-19-2017
+         *
+         * The other is the response is sending back null or '0' 11-19-2017
+         *
          */
         //Get the user
         $userAccount = User::find($id);
@@ -135,6 +141,7 @@ class CardController extends Controller
                 //calculate all energy of the cards
             }
 
+            /*
             if (Card::whereIn('id', $cards_to_delete)->delete()) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
@@ -142,7 +149,7 @@ class CardController extends Controller
                 //refund user ID $totalEnergy * .2
 
             }
-
+            */
 
 
         }
