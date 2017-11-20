@@ -10,6 +10,7 @@ use App\Move;
 use App\User;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\Transformer\UserAccountTransformer;
+use Illuminate\Support\Collection;
 
 class CardController extends Controller
 {
@@ -125,7 +126,7 @@ class CardController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
-        $card = Card::all();
+        $card = new Collection();//convert it to a 'collection' instead of an array to rid the
 
         $totalEnergy = 0;
 
