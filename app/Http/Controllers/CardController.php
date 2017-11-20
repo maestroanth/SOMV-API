@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = json_encode($this->$card); //json_encode($card);
+        $this->response = json_encode($this->$card[0]['Energy_Value']); //json_encode($card);
         return $this->response;
     }
 }
