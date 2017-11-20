@@ -127,7 +127,7 @@ class CardController extends Controller
         //Get the user
         $userAccount = User::find($id);
         $card = new Card;//convert it to a 'collection' instead of an array to rid the
-
+        $success = false;
         $totalEnergy = 0;
 
         //$cardsToDelete = Card::find($id);
@@ -142,22 +142,29 @@ class CardController extends Controller
                 $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
                 $totalEnergy = $totalEnergy + $this->$card[$i][0]->Energy_Value;
+                if($cards_to_delete[$i]->delete){
+                    $this->$success = true;
+                }
+                else{
+                    $this->$success = false;
+                }
                 //calculate all energy of the cards
             }
 
-            /*
-            if (Card::whereIn('id', $cards_to_delete)->delete()) {
+
+            if ($this->$success == true) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
 
+            }else{
+                $this->response->errorInternalError('Could not delete Universe(s)');
             }
-            */
+
 
 
         }
-        $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
         return $this->response;
     }
 }
