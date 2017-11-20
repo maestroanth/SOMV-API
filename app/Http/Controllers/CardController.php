@@ -139,7 +139,7 @@ class CardController extends Controller
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
                 //1. It is iterating correctly
-                $this->$card[$i] = Card::find($cards_to_delete[$i]);//$i might throw error here
+                $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id']);//$i might throw error here
 
                 //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = json_encode($cards_to_delete); //json_encode($card);
+        $this->response = json_encode($card); //json_encode($card);
         return $this->response;
     }
 }
