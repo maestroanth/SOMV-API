@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = typeOf($this->$card[0]); //json_encode($card);
+        $this->response = gettype($this->$card); //json_encode($card);
         return $this->response;
     }
 }
