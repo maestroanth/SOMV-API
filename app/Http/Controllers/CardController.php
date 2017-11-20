@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = var_dump(json_decode($cards_to_delete, true));; //json_encode($card);
+        $this->response = var_dump($cards_to_delete, true); //json_encode($card);
         return $this->response;
     }
 }
