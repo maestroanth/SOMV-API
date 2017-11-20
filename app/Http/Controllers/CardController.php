@@ -133,12 +133,12 @@ class CardController extends Controller
         if (!$userAccount) {
             return $this->response->errorNotFound('User Not Found');
         } else {
-            $this->response = "test"; //json_encode($card);
+            //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
-            /*
+
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
-                $this->$card = Card::find($cards_to_delete[$i]);//$i might throw error here
-                $this->response = "test"; //json_encode($card);
+                //$this->$card = Card::find($cards_to_delete[$i]);//$i might throw error here
+                $this->response = json_decode(count($cards_to_delete)); //json_encode($card);
                 //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
