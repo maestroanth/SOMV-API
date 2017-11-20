@@ -154,7 +154,7 @@ class CardController extends Controller
 
 
         }
-
+        $this->response = "test"; //json_encode($card);
         return $this->response;
     }
 }
