@@ -118,16 +118,25 @@ class CardController extends Controller
         /*
          * Delete cards and then refund to User %20 Energy Value
          *
+         *What's working as of 11-19-2017:
+         * 1. Deletes multiple cards at once, and the correct cards too
          *
-         * Pending issue is that it only deletes the first card sent from request still 11-19-2017
+         * 2. Tallies up the correct energy to be refunded
          *
-         * The other is the response is sending back null or '0' 11-19-2017
+         *
+         * What's not working as of 11-19-2017
+         *
+         * 1. For whatever reason not doing the $this->$success checks correctly
+         *
+         * 2. The Energy Value is not being refunded correctly to the user
+         *
+         * 3. Front-end still needs to auto-refresh after delete button is clicked
          *
          */
         //Get the user
         $userAccount = User::find($id);
         $card = new Card;//convert it to a 'collection' instead of an array to rid the
-        $success = true;
+        $success = false;
         $totalEnergy = 0;
 
         //$cardsToDelete = Card::find($id);
@@ -138,30 +147,28 @@ class CardController extends Controller
             $cards_to_delete = json_decode($request->getContent(), true);
 
             for ($i = 0; $i < count($cards_to_delete); $i++) {
-                //1. It is iterating correctly
+
                 $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
                 $totalEnergy = $totalEnergy + $this->$card[$i][0]->Energy_Value;
                 $deleteCard = Card::find($cards_to_delete[$i]['id']);
                 if($deleteCard->delete()){
-
+                    $success = true;
                 }
                 else{
-
+                    $success = false;
                 }
                 //calculate all energy of the cards
             }
 
 
-    //        if ($this->$success == true) {
-
+            if ($success == true) {
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
-
-        //    }else{
-         //       $this->response->errorInternalError('Could not delete Universe(s)');
-           // }
+            }else{
+                 $this->response->errorInternalError('Could not delete Universe(s)');
+            }
 
 
 
