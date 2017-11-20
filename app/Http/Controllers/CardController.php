@@ -142,7 +142,7 @@ class CardController extends Controller
                 $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
                 $totalEnergy = $totalEnergy + $this->$card[$i][0]->Energy_Value;
-                if($this->$card[$i]->delete()){
+                if(Card::find($cards_to_delete[$i]['id'])->delete()){
                     $this->$success = true;
                 }
                 else{
@@ -152,14 +152,13 @@ class CardController extends Controller
             }
 
 
-            if ($card->delete()) {
+            if ($this->$success == true) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
 
-            }
-            else{
+            }else{
                 $this->response->errorInternalError('Could not delete Universe(s)');
             }
 
