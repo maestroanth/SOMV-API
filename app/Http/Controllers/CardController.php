@@ -141,7 +141,7 @@ class CardController extends Controller
                 //1. It is iterating correctly
                 $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
-                $totalEnergy = $totalEnergy + $this->$card[0][0][$i]->Energy_Value;
+                $totalEnergy = $totalEnergy + $this->$card[$i][0]->Energy_Value;
                 //calculate all energy of the cards
             }
 
