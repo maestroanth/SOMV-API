@@ -126,7 +126,7 @@ class CardController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
-        $card = new Card;//convert it to a 'collection' instead of an array to rid the
+        //$card = new Card;//convert it to a 'collection' instead of an array to rid the
 
         $totalEnergy = 0;
 
@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = json_encode($card); //json_encode($card);
+        $this->response = json_encode($cards_to_delete); //json_encode($card);
         return $this->response;
     }
 }
