@@ -136,7 +136,7 @@ class CardController extends Controller
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
                 $card = Card::find($cards_to_delete[$i]);//$i might throw error here
-                $this->response = $card.toString();
+                $this->response = json_encode($card);
                 //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
             }
