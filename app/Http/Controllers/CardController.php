@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = var_dump($this->$card[0]); //json_encode($card);
+        $this->response = $this->$card[0][0]['id']; //json_encode($card);
         return $this->response;
     }
 }
