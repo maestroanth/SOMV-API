@@ -152,13 +152,14 @@ class CardController extends Controller
             }
 
 
-            if ($this->$success == true) {
+            if ($card->delete()) {
 
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
 
-            }else{
+            }
+            else{
                 $this->response->errorInternalError('Could not delete Universe(s)');
             }
 
