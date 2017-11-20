@@ -157,7 +157,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = json_encode(Card::find('id', $cards_to_delete[$i]['id'])); //json_encode($card);
+        $this->response = Card::where('id', $cards_to_delete[$i]['id']); //json_encode($card);
         return $this->response;
     }
 }
