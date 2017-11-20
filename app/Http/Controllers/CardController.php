@@ -125,6 +125,7 @@ class CardController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
+        $card = new Card;
 
         $totalEnergy = 0;
 
@@ -135,7 +136,7 @@ class CardController extends Controller
             $cards_to_delete = json_decode($request->getContent(), true);
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
-                $card = Card::find($cards_to_delete[$i]);//$i might throw error here
+                $this->$card = Card::find($cards_to_delete[$i]);//$i might throw error here
                 $this->response = json_encode($card);
                 //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
