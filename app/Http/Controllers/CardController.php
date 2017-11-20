@@ -126,11 +126,9 @@ class CardController extends Controller
          *
          * What's not working as of 11-19-2017
          *
-         * 1. For whatever reason not doing the $this->$success checks correctly
+         * 1. The Energy Value is not being refunded correctly to the user
          *
-         * 2. The Energy Value is not being refunded correctly to the user
-         *
-         * 3. Front-end still needs to auto-refresh after delete button is clicked
+         * 2. Front-end still needs to auto-refresh after delete button is clicked
          *
          */
         //Get the user
@@ -164,7 +162,7 @@ class CardController extends Controller
 
             if ($success == true) {
                 $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
-                $this->response = "Universes Destroyed. Refunded Energy: " + ($totalEnergy * .2);
+                $this->response = 'Universes Destroyed. Refunded Energy: ' + ($totalEnergy * .2);
                 //refund user ID $totalEnergy * .2
             }else{
                  $this->response->errorInternalError('Could not delete Universe(s)');
