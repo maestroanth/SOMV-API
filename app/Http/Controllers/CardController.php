@@ -126,7 +126,7 @@ class CardController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
-        $card;//convert it to a 'collection' instead of an array to rid the
+        $card = Card::class;//convert it to a 'collection' instead of an array to rid the
 
         $totalEnergy = 0;
 
