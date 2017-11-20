@@ -126,7 +126,7 @@ class CardController extends Controller
          */
         //Get the user
         $userAccount = User::find($id);
-        //$card = new Card;//convert it to a 'collection' instead of an array to rid the
+        $card = new Card;//convert it to a 'collection' instead of an array to rid the
 
         $totalEnergy = 0;
 
@@ -139,7 +139,7 @@ class CardController extends Controller
 
             for ($i = 0; $i < count($cards_to_delete) - 1; $i++) {
                 //1. It is iterating correctly
-                $this->$card[$i] = Card::find($cards_to_delete[$i])->get();//$i might throw error here
+                $this->$card[$i] = Card::find($cards_to_delete[$i]);//$i might throw error here
 
                 //$totalEnergy = $totalEnergy + $card->Energy_Value;
                 //calculate all energy of the cards
