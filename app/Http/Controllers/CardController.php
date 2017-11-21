@@ -169,7 +169,7 @@ class CardController extends Controller
                     $nameString = $userAccount['sagename'];
                     //$this->response = 413;
                     $this->response->setStatusCode(200);
-                    $this->response->withItem($userAccount, new  UserAccountTransformer());
+                    $this->response = $userAccount['Energy'];
 
                 }
                 else{
