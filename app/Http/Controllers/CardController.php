@@ -171,7 +171,7 @@ class CardController extends Controller
 
 
         }
-        $this->var_dump($userAccount);
+        $this->response = var_dump($userAccount);
         return $this->response;
     }
 }
