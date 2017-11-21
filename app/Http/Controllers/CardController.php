@@ -159,11 +159,15 @@ class CardController extends Controller
             }
 
 
-            if ($success == true && $userAccount->save()) {
+            if ($success == true) {
 
                 $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
-                $this->response =  $userAccount['Energy'];
-                $this->response = print_r('Universes Destroyed. Refunded Energy: ' + ($totalEnergy * .2).toString() + ' to UserID: ' + $id.toString());
+                if($userAccount->save()) {
+                    $this->response = 'Universes Destroyed. Refunded Energy: ' + ($totalEnergy * .2) + ' to UserID: ' + $id;
+                }
+                else{
+                    $this->response->errorInternalError('Could not update user energy.');
+                }
                 //refund user ID $totalEnergy * .2
             }else{
                  $this->response->errorInternalError('Could not delete Universe(s)');
