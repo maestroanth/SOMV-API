@@ -169,7 +169,7 @@ class CardController extends Controller
                     $nameString = $userAccount['sagename'];
                     //$this->response = 413;
                     $this->response->setStatusCode(200);
-                    $this->response = "Universes Destroyed. Refunded $energyString Energy to Sage: $nameString.";
+                    $this->response->withItem($userAccount['Energy'] );
 
                 }
                 else{
