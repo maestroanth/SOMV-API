@@ -163,9 +163,9 @@ class CardController extends Controller
 
                 $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
                 if($userAccount->save()) {
-                    $energyString = ($totalEnergy * .2).toString();
+                    $energyString = ($totalEnergy * .2);
                     $idString = $userAccount['id'].toString();
-                    $this->response = 'Universes Destroyed. Refunded Energy: ' + $energyString + ' to UserID: ' + $idString + '.';
+                    $this->response = 'Universes Destroyed. Refunded Energy: ' + $energyString.toString() + ' to UserID: ' + $idString + '.';
                 }
                 else{
                     $this->response->errorInternalError('Could not update user energy.');
