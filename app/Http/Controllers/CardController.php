@@ -118,14 +118,16 @@ class CardController extends Controller
         /*
          * Delete cards and then refund to User %20 Energy Value
          *
-         *What's working as of 11-19-2017:
+         *What's working as of 11-20-2017:
          * 1. Deletes multiple cards at once, and the correct cards too
          *
          * 2. Tallies up the correct energy to be refunded
          *
          * 3. Refunds Energy To User Account
          *
-         * What's not working as of 11-19-2017
+         * What's not working as of 11-20-2017
+         *
+         * 1. Sending offset errors still after use case is done successfully
          *
          * 2. Front-end still needs to auto-refresh after delete button is clicked
          *
@@ -165,20 +167,18 @@ class CardController extends Controller
                 if($userAccount->save()) {
                     $energyString = ($totalEnergy * .2);
                     $nameString = $userAccount['sagename'];
-                    $this->response = "Universes Destroyed. Refunded $energyString Energy to Sage: $nameString.";
+                    return $this->response = "Universes Destroyed. Refunded $energyString Energy to Sage: $nameString.";
                 }
                 else{
-                    $this->response->errorInternalError('Could not update user energy.');
+                    return $this->response->errorInternalError('Could not update user energy.');
                 }
                 //refund user ID $totalEnergy * .2
             }else{
-                 $this->response->errorInternalError('Could not delete Universe(s)');
+                return $this->response->errorInternalError('Could not delete Universe(s)');
             }
 
 
 
         }
-
-        return $this->response;
     }
 }
