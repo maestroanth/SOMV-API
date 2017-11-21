@@ -127,7 +127,7 @@ class CardController extends Controller
          *
          * What's not working as of 11-20-2017
          *
-         * 1. Sending offset errors responses even AFTER a status 200 has been sent
+         * 1. See the double asterisk I marked '**'
          *
          * 2. Front-end still needs to auto-refresh after delete button is clicked
          *
@@ -169,7 +169,7 @@ class CardController extends Controller
                     $nameString = $userAccount['sagename'];
                     //$this->response = 413;
                     $this->response->setStatusCode(200);
-                    $this->response = $userAccount['Energy'];
+                    $this->response = $userAccount['Energy'];//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
 
                 }
                 else{
