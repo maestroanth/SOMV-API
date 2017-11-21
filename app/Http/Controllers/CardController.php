@@ -127,7 +127,7 @@ class CardController extends Controller
          *
          * What's not working as of 11-20-2017
          *
-         * 1. Sending offset errors still after use case is done successfully
+         * 1. Sending offset errors responses even AFTER a status 200 has been sent
          *
          * 2. Front-end still needs to auto-refresh after delete button is clicked
          *
