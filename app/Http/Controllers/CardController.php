@@ -140,7 +140,7 @@ class CardController extends Controller
 
         //$cardsToDelete = Card::find($id);
         if (!$userAccount) {
-            return $this->response->errorNotFound('User Not Found');
+            $this->response->errorNotFound('User Not Found');
         } else {
             //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
@@ -167,18 +167,20 @@ class CardController extends Controller
                 if($userAccount->save()) {
                     $energyString = ($totalEnergy * .2);
                     $nameString = $userAccount['sagename'];
-                    return $this->response = "Universes Destroyed. Refunded $energyString Energy to Sage: $nameString.";
+                    $this->response = "Universes Destroyed. Refunded $energyString Energy to Sage: $nameString.";
                 }
                 else{
-                    return $this->response->errorInternalError('Could not update user energy.');
+                    $this->response->errorInternalError('Could not update user energy.');
                 }
                 //refund user ID $totalEnergy * .2
             }else{
-                return $this->response->errorInternalError('Could not delete Universe(s)');
+                 $this->response->errorInternalError('Could not delete Universe(s)');
             }
 
 
 
         }
+
+        return $this->response;
     }
 }
