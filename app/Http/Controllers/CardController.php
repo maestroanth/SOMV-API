@@ -161,7 +161,6 @@ class CardController extends Controller
             }
 
 
-            if ($success == true) {
 
                 $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
                 if($userAccount->save()) {
@@ -173,9 +172,7 @@ class CardController extends Controller
                     $this->response->errorInternalError('Could not update user energy.');
                 }
                 //refund user ID $totalEnergy * .2
-            }else{
-                 $this->response->errorInternalError('Could not delete Universe(s)');
-            }
+     
 
 
 
