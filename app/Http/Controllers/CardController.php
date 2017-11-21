@@ -161,7 +161,8 @@ class CardController extends Controller
 
 
             if ($success == true) {
-                $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
+                $this->response = var_dump($userAccount);
+               // $userAccount->Energy = $userAccount->Energy + ($totalEnergy * .2);
                 $this->response = 'Universes Destroyed. Refunded Energy: ' + $totalEnergy * .2 + ' to UserID: ' + $id;
                 //refund user ID $totalEnergy * .2
             }else{
@@ -171,7 +172,7 @@ class CardController extends Controller
 
 
         }
-        $this->response = var_dump($userAccount);
+
         return $this->response;
     }
 }
