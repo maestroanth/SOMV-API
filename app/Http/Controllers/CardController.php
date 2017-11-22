@@ -94,6 +94,7 @@ class CardController extends Controller
                 $newCard->FK_Move_4 = $request->input('FK_Move_4');
                 $newCard->FK_Move_Ultimate = $request->input('FK_Move_Ultimate');
 
+                $newCard->Birth_URL = $request->input('Birth_URL');
 
                 //Step 2. Assign the FK to user
                 $newCard->FK_userID = $id;
