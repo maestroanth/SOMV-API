@@ -9,3 +9,4 @@ class Keyword extends Model
     protected $table = 'keywords_for_universes';
     public $timestamps = false;
 }
+?>

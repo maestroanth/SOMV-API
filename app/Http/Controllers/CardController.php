@@ -36,6 +36,13 @@ class CardController extends Controller
         return $this->response;
     }
 
+    public function getAllKeywords()
+    {
+        $this->response = Keyword::all();
+        //$this->response = json_encode($this->response);
+        return $this->response;
+    }
+
     public function getUniverse($id)
     {
         $id = (int)$id;
@@ -48,13 +55,6 @@ class CardController extends Controller
     {
         $this->cardCollection = Card::where('FK_userID', $userID)->get();
         $this->response = json_encode($this->cardCollection );
-        return $this->response;
-    }
-
-    public function getAllKeywords()
-    {
-        $this->response = Keyword::all();
-        //$this->response = json_encode($this->response);
         return $this->response;
     }
 

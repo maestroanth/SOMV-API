@@ -9,3 +9,4 @@ class Card extends Model
     protected $table = 'universe_cards';
     public $timestamps = false;
 }
+?>

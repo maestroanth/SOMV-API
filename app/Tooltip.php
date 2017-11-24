@@ -9,3 +9,4 @@ class Tooltip extends Model
     protected $table = 'tooltips';
     public $timestamps = false;
 }
+?>

@@ -9,3 +9,4 @@ class Universe extends Model
     protected $table = 'universes';
     public $timestamps = false;
 }
+?>
