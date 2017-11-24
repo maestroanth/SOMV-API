@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Card;
 use App\Universe;
 use App\Move;
+use App\Keyword;
 use App\User;
 use EllipseSynergie\ApiResponse\Contracts\Response;
 use App\Transformer\UserAccountTransformer;
@@ -44,9 +45,15 @@ class CardController extends Controller
     }
 
     public function getCardCollection($userID)
+{
+    $this->cardCollection = Card::where('FK_userID', $userID)->get();
+    $this->response = json_encode($this->cardCollection );
+    return $this->response;
+}
+
+    public function getKeywords()
     {
-        $this->cardCollection = Card::where('FK_userID', $userID)->get();
-        $this->response = json_encode($this->cardCollection );
+        $this->response = Keyword::all();
         return $this->response;
     }
 

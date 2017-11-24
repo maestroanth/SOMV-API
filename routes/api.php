@@ -46,6 +46,9 @@ Route::get('moves','CardController@getAllMoves')->middleware('auth:api');
 Route::post('destroy-cards/{id}','CardController@destroyCards')->middleware('auth:api');
 //I'm going to have to manually create an OAuth user since the internal workings of /register route is a pain in the ass
 
+Route::get('keywords','CardController@getKeywords')->middleware('auth:api');
+
+
 /*
 Route::get('/user/{user}', function (App\user $user) {
     return $user->email;
