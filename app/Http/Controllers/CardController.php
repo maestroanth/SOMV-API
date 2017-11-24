@@ -45,16 +45,16 @@ class CardController extends Controller
     }
 
     public function getCardCollection($userID)
-{
-    $this->cardCollection = Card::where('FK_userID', $userID)->get();
-    $this->response = json_encode($this->cardCollection );
-    return $this->response;
-}
+    {
+        $this->cardCollection = Card::where('FK_userID', $userID)->get();
+        $this->response = json_encode($this->cardCollection );
+        return $this->response;
+    }
 
-    public function getKeywords()
+    public function getAllKeywords()
     {
         $this->response = Keyword::all();
-        $this->response = json_encode($this->response);
+        //$this->response = json_encode($this->response);
         return $this->response;
     }
 
