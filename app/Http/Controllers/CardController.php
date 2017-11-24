@@ -54,6 +54,7 @@ class CardController extends Controller
     public function getKeywords()
     {
         $this->response = Keyword::all();
+        $this->response = json_encode($this->response);
         return $this->response;
     }
 
