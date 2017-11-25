@@ -27,6 +27,7 @@ class CardController extends Controller
     public function getAllUniverses()
     {
         $this->response = Universe::all();
+        $this->response = json_encode($this->response);
         return $this->response;
     }
 
@@ -39,7 +40,7 @@ class CardController extends Controller
     public function getAllKeywords()
     {
         $this->response = Keyword::all();
-        //$this->response = json_encode($this->response);
+        $this->response = json_encode($this->response);
         return $this->response;
     }
 
