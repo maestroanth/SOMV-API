@@ -98,10 +98,15 @@ class CardController extends Controller
                 $newCard->Strength_Concept_4 = $request->input('Strength_Concept_4');
 
                 $newCard->FK_Move_1 = $request->input('FK_Move_1');
+                $newCard->Move1_Buff_Tally = $request->input('Move1_Buff_Tally');
                 $newCard->FK_Move_2 = $request->input('FK_Move_2');
+                $newCard->Move2_Buff_Tally = $request->input('Move2_Buff_Tally');
                 $newCard->FK_Move_3 = $request->input('FK_Move_3');
+                $newCard->Move3_Buff_Tally = $request->input('Move3_Buff_Tally');
                 $newCard->FK_Move_4 = $request->input('FK_Move_4');
+                $newCard->Move4_Buff_Tally = $request->input('Move4_Buff_Tally');
                 $newCard->FK_Move_Ultimate = $request->input('FK_Move_Ultimate');
+                $newCard->MoveUltimate_Buff_Tally = $request->input('MoveUltimate_Buff_Tally');
 
                 $newCard->Birth_URL = $request->input('Birth_URL');
 
