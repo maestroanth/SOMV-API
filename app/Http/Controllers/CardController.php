@@ -61,6 +61,7 @@ class CardController extends Controller
 
     public function updateCardNameDescription(Request $request, $id)
     {
+
         $cardToUpdate = Card::find($id);
         if(!$cardToUpdate)
         {
@@ -72,16 +73,17 @@ class CardController extends Controller
                 //Step 1. Generate the Card (This will be after user modifications)
                 $cardToUpdate->name = $request->input('name');
                 $cardToUpdate->description = $request->input('description');
+                if ($cardToUpdate->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
+
+                    return $this->response = json_encode($cardToUpdate);//remember to do json_encode from now on
+                } else {
+                    return $this->response->errorInternalError('Could not update Universe card.');
+                }
             }
             catch (Exception $e){
                 return $this->response->errorInternalError('Could not update Universe card.');
             }
-            if ($cardToUpdate->save()) {//this line is important because the ->save is what actually saves it into the DB even though it is in an 'if' statement
 
-                return $this->response = json_encode($cardToUpdate);//remember to do json_encode from now on
-            } else {
-                return $this->response->errorInternalError('Could not update Universe card.');
-            }
         }
 
     }
