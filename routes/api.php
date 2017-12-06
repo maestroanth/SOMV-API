@@ -42,6 +42,7 @@ Route::get('universe-category/{id}','CardController@getUniverse')->middleware('a
 Route::get('universes','CardController@getAllUniverses')->middleware('auth:api');
 Route::get('collection/{id}','CardController@getCardCollection')->middleware('auth:api');
 Route::post('generate-card/{id}','CardController@grantNewCard')->middleware('auth:api');
+Route::post('update-card/{id}','CardController@updateCardNameDescription')->middleware('auth:api');
 Route::get('moves','CardController@getAllMoves')->middleware('auth:api');
 Route::get('keywords','CardController@getAllKeywords')->middleware('auth:api');
 
