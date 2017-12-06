@@ -140,6 +140,8 @@ class CardController extends Controller
 
                 $newCard->Birth_URL = $request->input('Birth_URL');
 
+                $newCard->Created_By = $request->input('Created_By');
+
                 //Step 2. Assign the FK to user
                 $newCard->FK_userID = $id;
 
