@@ -1,0 +1,188 @@
+﻿<div style="text-align: center;" class="container" *ngIf="stage3Form.showForm">
+  <br /><br />
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{stage3Form.availableEnergy}}</h4>
+  <h5 style="text-decoration: underline;">Stage 3: The Physical Laws You Control</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    The Multiverse says to you, "Congratulations Sage! I have no idea how you were able to balance this Universe so well, but it is turning out to be something spectacular! 
+    Now you get to choose your laws of nature for this Universe!"
+  </p><br />
+  <p style="font-weight: bold; color: green; margin-bottom: 20px;">
+    Every Universe provides you with a set of physical laws you may use as abilities (or your moves) in battle. Each Universe has a set of 1-4 moves where one at least
+    one move acts as a base energy generator
+  </p><br />
+  <div class="col-md-12">
+    <h5 style="text-decoration: underline; color: orangered; margin-bottom: 20px;">{{stage3Form.rolledUniverse.name}}</h5><br /><br />
+    <h5>-------------------------------------------------------------------------------------------------------------</h5>
+    <div style="font-weight: bold; color: green; margin: 50px;">
+      <h5 style="text-decoration: underline;">Move 1 (Default)  </h5><br /><br />
+      <p style="color:blue;">
+        {{Move1Name}}<br /><br />
+        Times Buffed: {{buff1Tally}}
+      </p>
+      <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="buff(1)" [disabled]="!buff1Toggle">Buff This Move</button><br />
+      <p style="color:red;">Energy Cost: {{buff1EnergyCost}}</p>
+      <p style="color:red;">Faulty Universe Increase: {{buff1FaultyIncrease}}%</p>
+    </div>
+    <div><p style="color:red; text-align: center;"> {{scoldMessage1}}</p></div>
+    <h5>-------------------------------------------------------------------------------------------------------------</h5>
+    <div style="font-weight: bold; color: green; margin: 50px;">
+      <h5 style="text-decoration: underline;">Move 2:</h5><br /><br />
+      <form action="">
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move2Radio" name="move2" [value]="radioMove2Choice1" (change)="onSelectionChange2(radioMove2Choice1)" checked> {{this.RandMoveName1[2]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move2Radio" name="move2" [value]="radioMove2Choice2" (change)="onSelectionChange2(radioMove2Choice2)"> {{this.RandMoveName2[2]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move2Radio" name="move2" [value]="radioMove2Choice3" (change)="onSelectionChange2(radioMove2Choice3)"> {{this.RandMoveName3[2]}}</label><br>
+      </form>
+
+      <div class="row" style="color:red; font-weight: bold; margin: 30px;">
+        <div class="col-md-4">
+          {{test}}
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="buff(2)" [disabled]="!buff2Toggle">Buff This Move</button><br />
+          <p style="color:red;">Energy Cost: {{buff2EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{buff2FaultyIncrease}}%</p>
+        </div>
+
+        <div class="col-md-4">
+          <p style="color:blue;">
+            {{ this.selectedEntry2 | json }}<br /><br />
+            Times Buffed: {{buff2Tally}}
+          </p>
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="purchase2()" [disabled]="!purchase2Toggle">Purchase This Move</button><br />
+         
+          <p style="color:red;">Energy Cost: {{purchase2EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{purchase2FaultyIncrease}}%</p>
+        </div>
+
+        <div class="col-md-4">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="reroll(2)" [disabled]="!reroll2Toggle">Re-Roll Move</button><br />
+          <p style="color:red;">Energy Cost: {{reroll2EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{reroll2FaultyIncrease}}%</p>
+        </div>
+        <div><p style="color:red; text-align: center;"> {{scoldMessage2}}</p></div>
+      </div>
+    </div>
+    <h5>-------------------------------------------------------------------------------------------------------------</h5>
+    <div style="font-weight: bold; color: green; margin: 50px;">
+      <h5 style="text-decoration: underline;">Move 3:</h5><br /><br />
+      <form>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move3Radio" name="move3" [value]="radioMove3Choice1" (change)="onSelectionChange3(radioMove3Choice1)" checked> {{this.RandMoveName1[3]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move3Radio" name="move3" [value]="radioMove3Choice2" (change)="onSelectionChange3(radioMove3Choice2)"> {{this.RandMoveName2[3]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input type="radio" [disabled]="!move3Radio" name="move3" [value]="radioMove3Choice3" (change)="onSelectionChange3(radioMove3Choice3)"> {{this.RandMoveName3[3]}}</label><br>
+      </form>
+
+      <div class="row" style="color:red; font-weight: bold; margin: 30px;">
+        <div class="col-md-4">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="buff(3)" [disabled]="!buff3Toggle">Buff This Move</button><br />
+          <p style="color:red;">Energy Cost: {{buff3EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{buff3FaultyIncrease}}%</p>
+        </div>
+        
+        <div class="col-md-4">
+          <p style="color:blue;">
+            {{ this.selectedEntry3 | json }}<br /><br />
+            Times Buffed: {{buff3Tally}}
+          </p>
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="purchase3()" [disabled]="!purchase3Toggle">Purchase This Move</button><br />
+          <p style="color:red;">Energy Cost: {{purchase3EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{purchase3FaultyIncrease}}%</p>
+        </div>
+
+        <div class="col-md-4">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="reroll(3)" [disabled]="!reroll3Toggle">Re-Roll Move</button><br />
+          <p style="color:red;">Energy Cost: {{reroll3EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{reroll3FaultyIncrease}}%</p>
+        </div>
+        <div><p style="color:red; text-align: center;"> {{scoldMessage3}}</p></div>
+      </div>
+    </div>
+    <h5>-------------------------------------------------------------------------------------------------------------</h5>
+    <div style="font-weight: bold; color: green; margin: 50px;">
+      <h5 style="text-decoration: underline;">Move 4:</h5><br /><br />
+      <form>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input [disabled]="!move4Radio" type="radio" name="move4" [value]="radioMove4Choice1" (change)="onSelectionChange4(radioMove4Choice1)" checked> {{this.RandMoveName1[4]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input [disabled]="!move4Radio" type="radio" name="move4" [value]="radioMove4Choice2" (change)="onSelectionChange4(radioMove4Choice2)" c> {{this.RandMoveName2[4]}}</label><br>
+        <label tooltip="show the stats of each move here" style="cursor: pointer;"> <input [disabled]="!move4Radio" type="radio" name="move4" [value]="radioMove4Choice3" (change)="onSelectionChange4(radioMove4Choice3)" c> {{this.RandMoveName3[4]}}</label><br>
+      </form>
+
+      <div class="row" style="color:red; font-weight: bold; margin: 30px;">
+        <div class="col-md-4">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="buff(4)" [disabled]="!buff4Toggle">Buff This Move</button><br />
+          <p style="color:red;">Energy Cost: {{buff4EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{buff4FaultyIncrease}}%</p>
+        </div>
+       
+        <div class="col-md-4">
+          <p style="color:blue;">
+            {{ this.selectedEntry4 | json }}<br /><br />
+            Times Buffed: {{buff4Tally}}
+          </p>
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="purchase4()" [disabled]="!purchase4Toggle">Purchase This Move</button><br />
+          <p style="color:red;">Energy Cost: {{purchase4EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{purchase4FaultyIncrease}}%</p>
+        </div>
+        <div class="col-md-4">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="reroll(4)" [disabled]="!reroll4Toggle">Re-Roll Move</button><br />
+          <p style="color:red;">Energy Cost: {{reroll4EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{reroll4FaultyIncrease}}%</p>
+        </div>
+        <div><p style="color:red; text-align: center;"> {{scoldMessage4}}</p></div>
+      </div>
+    </div>
+    <h5>-------------------------------------------------------------------------------------------------------------</h5>
+    <div *ngIf="perfectUniverse" style="font-weight: bold; color: green; margin: 50px;">
+      
+      <h4 style="text-decoration: underline; color: goldenrod;">Ultimate Move:</h4><br /><br />
+      <p style="color: blue;">{{MoveUltimateName}}<br /><br />
+        Times Buffed: {{buff5Tally}}</p>
+      
+
+        <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="rerollUltimate()" [disabled]="!reroll5Toggle">Re-Roll Move Once For Free!</button><br />
+
+      <div class="row" style="color:red; font-weight: bold; margin: 30px;">
+        <div class="col-md-6">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="buff(5)" [disabled]="!buff5Toggle">Buff This Move</button><br />
+          <p style="color:red;">Energy Cost: {{buff5EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{buff5FaultyIncrease}}%</p>
+        </div>
+
+        <div class="col-md-6">
+          <button style="margin-top: 20px; margin-bottom: 20px; text-align: center;" type="button" (click)="purchase5()" [disabled]="!purchase5Toggle">Purchase This Move</button><br />
+          <p style="color:red;">Energy Cost: {{purchase5EnergyCost}}</p>
+          <p style="color:red;">Faulty Universe Increase: {{purchase5FaultyIncrease}}%</p>
+
+        </div>
+      </div>
+      <p style="color: blue;">{{perfectUniverseMessage}}</p>
+      <div><p style="color:red; text-align: center;"> {{scoldMessage5}}</p></div>
+    </div>
+  </div>
+  <h5>-------------------------------------------------------------------------------------------------------------</h5>
+      <p style="color: green; font-style: italic; text-align: center;">
+        (Directions: )
+      </p>      <br />
+
+      <p style="text-decoration:wavy ; color: red;">{{scoldMessage}} </p>
+      <div style="text-align: center;" class="container">
+        <h5 style="text-decoration:wavy ; color: red;">Energy Cost: {{stage3Form.cost}} </h5><br />
+        <h5 style="text-decoration:wavy ; color: red;">Faulty Universe %: {{stage3Form.faultyUniverse}} </h5><br /><br />
+        <br />
+      </div>
+  <div style="margin-top: 20px; color: green;">
+    <p>
+      The Multiverse says to you, "Just to be clear my lord, you are about to create your fine-tuned Universe. The following 
+      is an estimation summary of your chances of succes."
+    </p>
+
+   
+    <ul style="list-style: none; font-weight: bold;">
+      <li>You get your finely-tuned Universe card if you roll between {{stage3Form.faultyUniverse}} and 100%.</li>
+    </ul>
+    <button type="button" (click)="rollUniverseCard()" [disabled]="!rollUniverse">Roll Universe Card....</button><br /><br />
+  </div>
+  <p style="color: blue; font-weight: bold;">{{rollMessage}} </p>
+  <div style="margin-top: 30px">
+    <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+  </div>
+</div>
+<app-stage-4-form [stage4Form]="stage4Form"></app-stage-4-form><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->
+<app-render-universe [renderUniverseForm]="renderUniverseForm"></app-render-universe><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->

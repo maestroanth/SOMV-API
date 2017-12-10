@@ -1,0 +1,54 @@
+﻿<div style="text-align: center;" class="container" *ngIf="renderUniverseForm.showForm">
+  <br /><br />
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{renderUniverseForm.availableEnergy}}</h4>
+  <h5 style="text-decoration: underline;">Stage 5: Moment of Creation!!!!</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    The Multiverse says to you, "Congratulations Sage of the Multiverse! Look below to gaze upon the Majesty of your new Creation!".
+  </p><br />
+
+
+
+  <h1 style="text-decoration: underline; color: orangered;"> {{renderUniverseForm.universeCard.name}}</h1><br /><br />
+  <h3 style="font-style: italic; color: blue;"> Created By: Sage {{renderUniverseForm.universeCard.Created_By}}</h3><br /><br />
+  <h4 style="color: blueviolet;">Description</h4><br /><br />
+
+  <p style="color: blue; font-style: italic;">"{{renderUniverseForm.universeCard.description}}"</p>
+  <br /><br />
+  <h5 style="text-decoration: underline; color: orangered;"> The Forces </h5><br />
+
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Force_Name_1}}: {{renderUniverseForm.universeCard.Strength_Force_1}}</p>
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Force_Name_2}}: {{renderUniverseForm.universeCard.Strength_Force_2}}</p>
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Force_Name_3}}: {{renderUniverseForm.universeCard.Strength_Force_3}}</p>
+
+
+  <br />
+
+  <h5 style="text-decoration: underline; color: orangered;"> The Conceptual </h5><br />
+
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Concept_Name_1}}: {{renderUniverseForm.universeCard.Strength_Concept_1}}</p>
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Concept_Name_2}}: {{renderUniverseForm.universeCard.Strength_Concept_2}}</p>
+    <p style="color: green; font-weight: bold;">{{renderUniverseForm.universeCard.Concept_Name_3}}: {{renderUniverseForm.universeCard.Strength_Concept_3}}</p>
+
+    <br />
+
+  <h5 style="text-decoration: underline; color: orangered;"> The Laws You Can Bend (Your Moves) </h5><br />
+
+    <p style="color: green; font-weight: bold;">{{this.moveName[1]}}: Buff Level {{renderUniverseForm.universeCard.Move1_Buff_Tally}}</p>
+    <p style="color: green; font-weight: bold;">{{this.moveName[2]}}: Buff Level {{renderUniverseForm.universeCard.Move2_Buff_Tally}}</p>
+    <p style="color: green; font-weight: bold;">{{this.moveName[3]}}: Buff Level {{renderUniverseForm.universeCard.Move3_Buff_Tally}}</p>
+    <p style="color: green; font-weight: bold;">{{this.moveName[4]}}: Buff Level {{renderUniverseForm.universeCard.Move4_Buff_Tally}}</p>
+    <p style="font-weight: bold; color: goldenrod;" *ngIf="moveUltimate">Ultimate --- {{this.moveName[5]}}: Buff Level {{renderUniverseForm.universeCard.MoveUltimate_Buff_Tally}}</p>
+
+  <br />
+  <h5 style="text-decoration: underline; color: blue;"> Approximate Energy Value: {{renderUniverseForm.universeCard.Energy_Value}} </h5><br />
+  <h5 style="color: goldenrod;"><br />
+    {{renderUniverseForm.universeCard.Energy_Value}}
+  </h5><br /><br /> <br />
+  <h5 style="text-decoration: underline; color: blue;"> Original Universe Model</h5> <br />
+  <h5 style="color: orangered;"><br />
+    {{universeCategory.name}}
+  </h5><br /><br /> <br />
+
+    <p style="text-decoration:wavy ; color: red;">{{scoldMessage}} </p>
+</div>

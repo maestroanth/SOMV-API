@@ -1,0 +1,85 @@
+﻿
+<div style="text-align: center;">
+
+  <br />
+  <h2>
+    {{title}}
+  </h2>
+  <br />
+  <h3 style="color:green">Energy: {{energy}}</h3>
+
+  <div style="margin: auto; max-width: 1000px; margin-top:50px">
+    <data-table id="cards-grid"
+                headerTitle="Your Universes"
+                [items]="cards"
+                [itemCount]="cardCount"
+                [limit]="5"
+                [sortBy]="'name'"
+                [sortAsc]="false"
+                [selectColumn]="true"
+                [multiSelect]="true"
+                [substituteRows]="true"
+                [expandableRows]="true"
+                [translations]="translations"
+                [indexColumnHeader]="'#'"
+                [selectOnRowClick]="true"
+                (reload)="reloadCards($event)">
+
+      <template #dataTableExpand let-item="item">
+        <div [textContent]="item.description" style="padding: 5px; color: gray"></div>
+
+      </template>
+      <data-table-column 
+                         [property]="'name'"
+                         [header]="'Name'"
+                         [sortable]="true">
+      </data-table-column>
+      <data-table-column [property]="'FK_Move_1'"
+                         [header]="'Ability 1'"
+                         [sortable]="true">
+      </data-table-column>
+      <data-table-column [property]="'FK_Move_2'"
+                         [header]="'Ability 2'"
+                         [sortable]="true">
+
+      </data-table-column>
+      <data-table-column [property]="'FK_Move_3'"
+                         [header]="'Ability 3'"
+                         [sortable]="true">
+      </data-table-column>
+      <data-table-column [property]="'FK_Move_4'"
+                         [header]="'Ability 4'"
+                         [sortable]="true">
+      </data-table-column>
+      <data-table-column [property]="'FK_Move_Ultimate'"
+                         [header]="'Ultimate'"
+                         [cellColors]="cellColor"
+                         [sortable]="true">
+      </data-table-column>
+
+
+    </data-table>
+    <button type="button" (click)="saveAll()">Save Selected Universes</button>
+    <button type="button" (click)="deleteAll()" [disabled]="buttonToggle">Destroy Selected Universes</button><br /><br />
+    <!--(click)="navigateToSettings()"--> <button type="button" routerLinkActive="active" [disabled]="!isValid">Explore one of YOUR Universes (Adventure Mode)</button>
+
+
+    <!-- Suppose to show all that is selected, but not working, and not really necessary
+    <div style="margin-top: 10px">
+      <b>Selected:</b>
+      <span *ngIf="cardsTable.selectedRow == null"><i>No item selected</i></span>
+      <span [textContent]="cardsTable.selectedRow && cardsTable.selectedRow.item.title"></span>
+    </div>
+        -->
+    <br /><br />
+    <h4 style="color: green">{{response}}</h4>
+    <h4 style="color: green">{{error}}</h4>
+    <div style="margin-top: 30px">
+      <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+    </div>
+
+  </div><br /><br />
+
+  <button type="button" (click)="back()">Home Page</button><br /><br /><br /><br /><br /><br />
+
+</div>

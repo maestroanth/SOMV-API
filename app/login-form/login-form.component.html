@@ -1,0 +1,21 @@
+﻿<h2 style="text-align: center;">
+  {{title}}
+</h2>
+<br />
+<div style="text-align: center;">
+  <label>Login with your Sage Name (Remember....this is just like a "username")</label><br /><br />
+  <input [(ngModel)]="sagename" (keyup)="0" placeholder="Sage Name"><br />
+  <p>{{sagename}}</p><br />
+
+  <label>Enter your Password</label><br /><br />
+  <input [(ngModel)]="password" (keyup)="0" placeholder="Password"><br />
+  <p>{{password}}</p><br />
+
+  <button type="button" (click)="loginToAccount()">Login To Sage Account</button>
+  <button type="button" routerLink="/welcome" routerLinkActive="active">Back</button>
+  <button type="button" (click)="test()">Test Stuff</button>
+  <br /><br /><br /><br /><h4>{{response}} </h4><br /><br />
+  <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+  <br />
+  <p style="color: red">{{error}}</p>
+</div>

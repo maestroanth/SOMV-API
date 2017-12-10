@@ -1,0 +1,26 @@
+﻿<br />
+<div style="text-align: center;" class="container" *ngIf="subForm.showForm">
+  <h4 >{{subForm.caption}}</h4>
+    <form [formGroup]="myForm" novalidate (ngSubmit)="save(myForm)">
+      
+      <div class="form-group">
+        <!--Google how to add form controls when ready
+        <input class="form-control" type="text" [title]="control.toolTip"
+             [attr.maxlength]="control.width" [name]="whateverField"
+             [value]="control.defaultValue" [formControlName]="control.name"/>
+            -->
+        <input [(ngModel)]="input" type="text" formControlName="whateverField">
+        {{input}}
+        <small *ngIf="!myForm.controls.whateverField.valid" class="text-danger">
+          Name is required (minimum 5 characters).
+        </small>
+      </div>
+      <p></p><p></p><p></p>
+    <button type="button" (click)="update()" [disabled]="!myForm.valid">Submit</button>
+      <br /><br />
+      <h4 style="color: forestgreen">{{response}}</h4>
+      <br />
+      <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+      <br />
+  </form>
+</div>

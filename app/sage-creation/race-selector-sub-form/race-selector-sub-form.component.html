@@ -1,0 +1,188 @@
+﻿
+<i id="raceUp" class="fa fa-chevron-circle-left fa-4x" aria-hidden="true" style="cursor: pointer;" onmousedown="mouseDown(this.id); "onmouseup="mouseUp(this.id);" (click)="previousRace()"></i>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i id="raceDown" class="fa fa-chevron-circle-right fa-4x" aria-hidden="true" style="cursor: pointer;" onmousedown="mouseDown(this.id); "onmouseup="mouseUp(this.id);" (click)="nextRace()"></i>
+
+<br /><br /><br />
+<h1 style="text-align: center;">
+  {{race.race_name}}
+</h1>
+<br />
+<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle2"></i>
+<br /><br />
+<h5 tooltip={{tipDimensionalWake}} placement="bottom" style="text-align: center; cursor: default;">
+  Dimensionality: {{race.dimensional_wake}} creatures
+</h5>
+<br />
+<p style="color: blue;">{{race.description}}</p>
+
+<br />
+<div class="row">
+  <div class="col-md-6" >
+    <h3 tooltip={{tipPrimaryAttributes}} placement="top" style="text-align: center; cursor:default;">
+      {{subTitle}}
+    </h3>
+    <p>
+      {{attributeDescription}}
+    </p>
+
+    <br />
+
+      <div class="btn-group-vertical text-right" role="group" style="margin-left: -18%;">
+        <div class="btn row" style="margin: .8em; text-align: right;">
+          <h5 class="noselect" tooltip={{tipIntuition}} placement="left" style="display:inline-block; cursor:default;">
+            <!--I am playing with custom tooltip placement/styles-->
+            Intuition: {{race.base_intuition}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="intuitionUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('intuitionUp')"></i>
+
+
+            <i id="intuitionDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('intuitionDown')"></i>
+
+          </h5>
+        </div>
+
+        <div class="btn row" style="margin: .8em; text-align: right;">
+          <h5 class="noselect" tooltip={{tipIngenuity}} placement="left" style="display: initial; cursor:default;">
+            Ingenuity: {{race.base_ingenuity}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="ingenuityUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('ingenuityUp')"></i>
+
+
+            <i id="ingenuityDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('ingenuityDown')"></i>
+
+          </h5>
+        </div>
+
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInquisitiveness}} placement="left" style="display: inline; cursor:default;">
+            Inquisitiveness: {{race.base_inquisition}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="inquisitivenessUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('inquisitivenessUp')"></i>
+
+
+            <i id="inquisitivenessDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('inquisitivenessDown')"></i>
+
+          </h5>
+
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipIntelligence}} placement="left" style="display: inline; cursor:default;">
+            Intelligence: {{race.base_intelligence}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="intelligenceUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('intelligenceUp')"></i>
+
+
+            <i id="intelligenceDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('intelligenceDown')"></i>
+
+          </h5>
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInvigoration}} placement="left" style="display: inline; cursor:default;">
+            Invigoration: {{race.base_invigoration}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="invigorationUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('invigorationUp')"></i>
+
+
+            <i id="invigorationDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('invigorationDown')"></i>
+
+          </h5>
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInsanityControl}} placement="left" style="display: inline; cursor:default;">
+            Insanity Control: {{race.base_insanity_control}}&nbsp;&nbsp;
+          </h5>
+          <h5 style="display: inline-block; text-align:right;">
+            <i id="insanityControlUp" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('insanityControlUp')"></i>
+
+
+            <i id="insanityControlDown" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('insanityControlDown')"></i>
+
+
+          </h5>
+        </div>
+        <br /><br />
+
+    </div>
+      <h5 class="noselect" tooltip={{tipBonusPointsAtCreation}} placement="top"style="padding-right: 10%; cursor:default;">Attribute Points Left To Assign: {{race.bonus_points_at_creation}}</h5>
+
+
+    </div>
+  <div class="col-md-6">
+    <h3 style="text-align: center;">
+      {{subTitle2}}
+    </h3>
+   
+
+    <p>
+      {{imageDescription}}
+    </p>
+<i id="picUp" class="fa fa-chevron-circle-left fa-3x" aria-hidden="true" style="cursor: pointer;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="previousImage()"></i>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<i id="picDown" class="fa fa-chevron-circle-right fa-3x" aria-hidden="true" style="cursor: pointer;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="nextImage()"></i>
+<br /><br />
+    <div >
+      <img class="picture" src={{imageURL}} alt="Sorry, problem loading image....">
+    </div>
+    <!--
+    <button type="button" class="glyphicon glyphicon-circle-arrow-up">Increase</button>
+    <button type="button" class="glyphicon glyphicon-circle-arrow-down">Decrease</button>
+    -->
+    <br /><br />
+    <br />
+    <h3 style="text-align: center;">
+      Birth Universe: From The {{race.birth_universe}}
+    </h3>
+  </div>
+
+
+
+
+</div>
+<div style="padding-top:60px;">
+  <h5 style="color: green;">Racial Bonus: </h5>
+  <p style="color: green;">{{race.racial_bonuses}}</p>
+  <br />
+  <p style="color: red;" *ngIf="race.is_locked=='1'">Sorry, you cannot play as this race at this time.</p>
+
+  <button type="button" (click)="confirm()" [disabled]="!isValid" >Confirm</button> 
+  <button type="button" (click)="back()">Home Page</button>
+  <br /><br />
+  
+  <h4 style="color: forestgreen">{{response}}</h4><br /><br />
+  <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+  <br /><br /><br />
+</div>
+<!--
+  
+
+    id: string;
+    birth_universe: string;
+    race_name: string;
+    base_intuition: string;
+    base_ingenuity: string;
+    base_intelligence: string;
+    base_inquisition: string
+    base_invigoration: string;
+    base_insanity_control: string;
+    bonus_points_at_creation: string;
+    racial_bonuses: string
+
+    description: string;
+    personality: string;
+    dimensional_wake: string;
+    is_locked: string
+
+    is_metaphysical: string;
+    image_1: string;
+    image_2: string;
+    image_3: string-->

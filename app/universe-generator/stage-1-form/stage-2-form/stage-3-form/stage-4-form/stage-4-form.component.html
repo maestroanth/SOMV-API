@@ -1,0 +1,35 @@
+﻿<div style="text-align: center;" class="container" *ngIf="stage4Form.showForm">
+  <br /><br />
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{stage4Form.availableEnergy}}</h4>
+  <h5 style="text-decoration: underline;">Stage 4: Customization</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    The Multiverse says to you, "Here you can truly make this universe to you by choosing a name and write a custom description for it".
+  </p><br />
+  <p style="font-weight: bold; color: green; margin-bottom: 20px;">
+    Congratulations Sage!  If you are seeing this page, that means you successfully created your Universe Card without any glitches!<br />
+    <br /><br />
+    You can relax now, for this is no risk or cost for simply editting the name and description of your unique universe to your liking.....
+  </p><br />
+
+  <label>Enter your Universe's Name:</label><br /><br />
+  <input [(ngModel)]="universeName" (keyup)="0" placeholder="{{universeName}}"><br /><br />
+
+
+
+  <h4 style="color: blue; margin-top: 30px; margin-bottom: 30px;">Your New Universe will be further known throughout the Multiverse as:</h4>
+  <h5 style="text-decoration: underline; color: orangered;">{{universeName}}</h5><br /><br />
+
+  <label>Enter your Universe's Description:</label><br /><br />
+  <textarea [(ngModel)]="universeDescription" rows="12" cols="150">
+      {{universeDescription}}
+  </textarea>
+
+
+  <h4 style="color: blueviolet; margin-top: 40px;">Description:</h4>
+  <p style="color: blue; margin-top: 10px; font-style: italic;">{{universeDescription}}</p><br /><br />
+
+  <button type="button" (click)="submit()" [disabled]="submitToggle">Confirm....Show me my Universe!</button><br /><br /><br />
+  <p style="text-decoration:wavy ; color: red;">{{scoldMessage}} </p>
+</div>
+<app-render-universe [renderUniverseForm]="renderUniverseForm"></app-render-universe><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->

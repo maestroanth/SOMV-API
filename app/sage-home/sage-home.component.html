@@ -1,0 +1,25 @@
+﻿<h2 style="text-align: center;">
+  {{title}}
+</h2>
+<br /><br /><br />
+<div style="text-align: center;">
+  <button type="button" (click)="navigateToUniverseGenerator()" routerLinkActive="active" [disabled]="buttonToggle">Generate New Universes</button>
+  <button type="button" (click)="navigateToSageCreation()" routerLinkActive="active" *ngIf="buttonToggle">Create Your Sage!</button>
+  <button type="button" (click)="navigateToSageProfile()" routerLinkActive="active" *ngIf="!buttonToggle">View Sage Profile</button>
+  <button type="button" (click)="navigateToCardCollection()" routerLinkActive="active" [disabled]="buttonToggle">Manage Multiverse Collection</button>
+  <p></p>
+  <button type="button" (click)="navigateToSettings()" routerLinkActive="active" [disabled]="!isValid">Trade Universes With Other Sages</button>
+  <button type="button" (click)="navigateToSettings()" routerLinkActive="active" [disabled]="!isValid">Sage Duel (PVP Mode)</button>
+  <p></p>
+  <button type="button" (click)="navigateToSettings()" routerLinkActive="active" [disabled]="!isValid">Buy Energy (Support Developer)</button>
+  <p></p>
+  <h4 style="color: forestgreen">{{response}}</h4>
+  <p></p>
+  <button type="button" routerLink="/welcome" routerLinkActive="active">Logout</button>
+  <button type="button" (click)="navigateToSettings()" routerLinkActive="active">Account Settings</button>
+  <button type="button" (click)="test()">Test Stuff</button>
+
+  <br /><br /><br />
+  <h5 style="font-style: italic; color: blue;margin: 40px;">*Disclaimer: This app is functioning without any styling for the sake of having something to show. I intend to have
+  a more stylized rough-draft of this app up soon!!! Thank you for viewing my work in progress. - Anthony Walter (Programmer/Creator)</h5>
+</div>

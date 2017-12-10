@@ -1,0 +1,21 @@
+﻿:host /deep/ .index-column,
+:host /deep/ .index-column-header {
+  text-align: right;
+}
+
+:host /deep/ .data-table .data-table-row.selected {
+  background-color: #E4EDF9 !important;
+}
+
+
+data-column {
+  background-color: red;
+}
+
+btn.pagination {
+  cursor: pointer;
+}
+
+#bootstrap-overrides .disabled btn:disabled {
+  cursor: not-allowed !important;
+}
