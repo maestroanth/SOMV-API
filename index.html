@@ -7,7 +7,7 @@
   <meta name="author" content="Anthony Walter">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOMV: Universe Generator</title>
-  <base href=".\"><!--this sets the base routing or navigation for routing-->
+  <base href="/"><!--this sets the base routing or navigation for routing-->
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -17,8 +17,9 @@
 <link href="styles.27c2ff390a2ac22dc9d5.bundle.css" rel="stylesheet"/></head>
 <body>
   <app-root>Loading...</app-root>
-<script type="text/javascript" src="inline.61edff4d04efb5066bcc.bundle.js"></script><script type="text/javascript" src="polyfills.8843c686d555e1e0c3b2.bundle.js"></script><script type="text/javascript" src="scripts.9d36c5a0cf1b3563ad83.bundle.js"></script><script type="text/javascript" src="vendor.10808676558de13f3f36.bundle.js"></script><script type="text/javascript" src="main.0b3daa549cec37b8a901.bundle.js"></script></body>
+<script type="text/javascript" src="inline.54e1f3230a694aa76950.bundle.js"></script><script type="text/javascript" src="polyfills.45d3982d75a2b33096bd.bundle.js"></script><script type="text/javascript" src="vendor.9b2301efc5ee1b0d60c4.bundle.js"></script><script type="text/javascript" src="main.ff11faa02f58946c2c13.bundle.js"></script></body>
 </html>
+
 <script>
   function mouseDown(id) {
     document.getElementById(id).style.color = "red";
@@ -38,3 +39,22 @@
     $.mobile.pushStateEnabled = false;
   });
 </script> 
+<script type="text/javascript">
+  $(document).ready(function () {
+  let slideIndex = 0;
+  carousel();
+
+  function carousel() {
+    let i;
+    let x = document.getElementsByClassName("mySlides");
+    
+    for (i = 0; i < x.length; i++) {
+      x[i].classList.remove("active");
+    }
+    slideIndex++;
+    if (slideIndex > x.length) { slideIndex = 1 }
+    x[slideIndex - 1].classList.add("active");
+    setTimeout(carousel, 20000); // Change image every 2 seconds
+  }
+  });
+</script>
