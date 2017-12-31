@@ -262,10 +262,10 @@ class CardController extends Controller
 
         if ($success == true) {
 
-            $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
+            $userAccount['Energy'] = $userAccount['Energy'] + round(($totalEnergy * .2));
             round($userAccount['Energy']);
             if($userAccount->save()) {
-                $energyRefunded= ($totalEnergy * .2);
+                $energyRefunded = round(($totalEnergy * .2));
                 round($energyRefunded);
                 //$this->response = 413;
                 $this->response->setStatusCode(200);
