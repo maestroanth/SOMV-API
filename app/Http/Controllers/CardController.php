@@ -180,6 +180,7 @@ class CardController extends Controller
 
             $this->$card = Card::where('id', $cards_to_delete['id'])->get();//$i might throw error here
             $totalEnergy = $totalEnergy + $this->$card[0]->Energy_Value;
+            round((float)$totalEnergy, 0);
             $deleteCard = Card::find($cards_to_delete['id']);
             if ($deleteCard->delete()) {
                 $success = true;
@@ -191,10 +192,10 @@ class CardController extends Controller
             if ($success == true) {
 
                 $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
-                round((float)$userAccount['Energy'], -1);
+                round((float)$userAccount['Energy'], );
                 if($userAccount->save()) {
                     $energyRefunded= ($totalEnergy * .2);
-                    round((float)$energyRefunded, -1);
+                    round((float)$energyRefunded, 0);
                     $this->response->setStatusCode(200);
                     $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
 
