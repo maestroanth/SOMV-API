@@ -194,8 +194,7 @@ class CardController extends Controller
                 round($userAccount['Energy']);
                 if($userAccount->save()) {
                     $energyRefunded= ($totalEnergy * .2);
-                    $nameString = $userAccount['sagename'];
-                    //$this->response = 413;
+                    round($energyRefunded);
                     $this->response->setStatusCode(200);
                     $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
 
@@ -269,7 +268,7 @@ class CardController extends Controller
             round($userAccount['Energy']);
             if($userAccount->save()) {
                 $energyRefunded= ($totalEnergy * .2);
-                $nameString = $userAccount['sagename'];
+                round($energyRefunded);
                 //$this->response = 413;
                 $this->response->setStatusCode(200);
                 $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
