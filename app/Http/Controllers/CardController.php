@@ -160,6 +160,61 @@ class CardController extends Controller
         }
     }
 
+
+    public function destroyCard(Request $request, $id)
+    {
+        //Get the user
+        $userAccount = User::find($id);
+        $card = new Card;//convert it to a 'collection' instead of an array to rid the
+        $success = false;
+        $totalEnergy = 0;
+
+        //$cardsToDelete = Card::find($id);
+        if (!$userAccount) {
+            $this->response->errorNotFound('User Not Found');
+        } else {
+            //$this->response = "test"; //json_encode($card);
+            $cards_to_delete = json_decode($request->getContent(), true);
+
+
+
+            $this->$card = Card::where('id', $cards_to_delete['id'])->get();//$i might throw error here
+            $totalEnergy = $totalEnergy + $this->$card[0]->Energy_Value;
+            $deleteCard = Card::find($cards_to_delete['id']);
+            if ($deleteCard->delete()) {
+                $success = true;
+            } else {
+                $success = false;
+            }
+
+
+            if ($success == true) {
+
+                $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
+                if($userAccount->save()) {
+                    $energyRefunded= ($totalEnergy * .2);
+                    $nameString = $userAccount['sagename'];
+                    //$this->response = 413;
+                    $this->response->setStatusCode(200);
+                    $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
+
+                }
+                else{
+                    $this->response->errorInternalError('Could not update user energy.');
+                }
+                //refund user ID $totalEnergy * .2
+            }else{
+                $this->response->errorInternalError('Could not delete Universe(s)');
+            }
+
+
+
+        }
+
+        return $this->response;
+    }
+
+
     public function destroyCards(Request $request, $id)
     {
 
@@ -193,39 +248,37 @@ class CardController extends Controller
             //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
 
+            $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
-
-                $this->$card = Card::where('id', $cards_to_delete['id'])->get();//$i might throw error here
-                $totalEnergy = $totalEnergy + $this->$card[0]->Energy_Value;
-                $deleteCard = Card::find($cards_to_delete['id']);
-                if ($deleteCard->delete()) {
-                    $success = true;
-                } else {
-                    $success = false;
-                }
-
-
-            if ($success == true) {
-
-                $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
-                if($userAccount->save()) {
-                    $energyRefunded= ($totalEnergy * .2);
-                    $nameString = $userAccount['sagename'];
-                    //$this->response = 413;
-                    $this->response->setStatusCode(200);
-                    $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
-
-                }
-                else{
-                    $this->response->errorInternalError('Could not update user energy.');
-                }
-                //refund user ID $totalEnergy * .2
-            }else{
-                 $this->response->errorInternalError('Could not delete Universe(s)');
+            $totalEnergy = $totalEnergy + $this->$card[$i][0]->Energy_Value;
+            $deleteCard = Card::find($cards_to_delete[$i]['id']);
+            if ($deleteCard->delete()) {
+                $success = true;
+            } else {
+                $success = false;
             }
+            //calculate all energy of the cards
+
+        }
 
 
+        if ($success == true) {
 
+            $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
+            if($userAccount->save()) {
+                $energyRefunded= ($totalEnergy * .2);
+                $nameString = $userAccount['sagename'];
+                //$this->response = 413;
+                $this->response->setStatusCode(200);
+                $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
+
+            }
+            else{
+                $this->response->errorInternalError('Could not update user energy.');
+            }
+            //refund user ID $totalEnergy * .2
+        }else{
+             $this->response->errorInternalError('Could not delete Universe(s)');
         }
 
         return $this->response;
