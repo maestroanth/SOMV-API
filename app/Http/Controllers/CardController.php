@@ -139,6 +139,7 @@ class CardController extends Controller
                 $newCard->MoveUltimate_Buff_Tally = $request->input('MoveUltimate_Buff_Tally');
 
                 $newCard->Birth_URL = $request->input('Birth_URL');
+                $newCard->Energy_Value = $request->input('Energy_Value');
 
                 $newCard->Created_By = $request->input('Created_By');
 
