@@ -192,7 +192,7 @@ class CardController extends Controller
         } else {
             //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
-            $this->response->json_encode($cards_to_delete);
+            $this->response = json_encode($cards_to_delete);
 
 
 
