@@ -195,7 +195,7 @@ class CardController extends Controller
                 if($userAccount->save()) {
                     $energyRefunded= ($totalEnergy * .2);
                     round((float)$energyRefunded, 0,'.');
-                    $this->response->setStatusCode(200);
+                    $this->response->setStatusCode(200); 
                     $this->response = $energyRefunded;//**I want to return messages, but the front-end doesn't detect as a 'success' when I do and keeps sending requests...odd
 
                 }
