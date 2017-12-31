@@ -191,6 +191,7 @@ class CardController extends Controller
             if ($success == true) {
 
                 $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
+                round($userAccount['Energy']);
                 if($userAccount->save()) {
                     $energyRefunded= ($totalEnergy * .2);
                     $nameString = $userAccount['sagename'];
@@ -265,6 +266,7 @@ class CardController extends Controller
         if ($success == true) {
 
             $userAccount['Energy'] = $userAccount['Energy'] + ($totalEnergy * .2);
+            round($userAccount['Energy']);
             if($userAccount->save()) {
                 $energyRefunded= ($totalEnergy * .2);
                 $nameString = $userAccount['sagename'];
