@@ -193,7 +193,6 @@ class CardController extends Controller
             //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
 
-            for ($i = 0; $i < count($cards_to_delete); $i++) {
 
                 $this->$card[$i] = Card::where('id', $cards_to_delete[$i]['id'])->get();//$i might throw error here
 
@@ -206,7 +205,7 @@ class CardController extends Controller
                     $success = false;
                 }
                 //calculate all energy of the cards
-            }
+
 
 
             if ($success == true) {
