@@ -1,0 +1,19 @@
+﻿<h2 style="text-align: center;">{{title}}</h2><p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+<h3 style="text-align: center;">{{subTitle}}</h3>
+<br />
+<div style="text-align: center;">
+  <h3>Dear Multiverse, I would like to:</h3><br />
+  <button type="button" (click)="updateSageName()">Change My Sage Name</button>
+  <button type="button" (click)="updatePassword()">Change My Password</button>
+  <button type="button" (click)="updateRealName()">Change My Real Name</button>
+  <button type="button" (click)="updateEmail()">Change My Email Address</button>
+
+  <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+
+  <button type="button" (click)="delete()">Delete Account</button>
+  <button type="button" (click)="back()">Home Page</button>
+  <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+  <p></p><p></p><p></p><p></p><p></p><p></p><p></p><p></p>
+  <p style="color: red">{{sageNameWarning}}</p>
+  <app-account-change-form [subForm]="subForm"></app-account-change-form><!--Remember to bind @input shit here too for child components-->
+</div>

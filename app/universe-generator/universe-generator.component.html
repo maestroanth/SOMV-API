@@ -1,0 +1,130 @@
+﻿<br />
+<h4 style="text-align: center; color:blue">Welcome to your Universe Generator!</h4>
+<br />
+<h5 style="text-align: center; color:blue">{{tutorial}}</h5>
+<br /><br /><br /><br />
+<div style="text-align: center;">
+<h3 style="text-align: center;" *ngIf ="stage1Form.showCostFaulty">
+  {{title}}
+</h3>
+  <p style="text-align: center; font-style: italic;">
+    {{subTitle}}
+  </p>
+<br />
+  <br />
+
+
+</div>
+
+<div style="text-align: center;" class="container" *ngIf="mainForm">
+
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{stage1Form.availableEnergy}}</h4>
+  <br />
+  <h5 style="text-decoration: underline;">Stage 0: Before The Big Bang</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    Enter in any website's URL to give that initial 'spark' of energy to your Universe!
+  </p><br />
+  <p>
+    https://
+    <input [(ngModel)]="inputURL" placeholder="Website URL">
+  </p>
+
+  <br />
+  <div style="text-align: center;">
+    <label>URL you are entering: </label>
+    <br />
+    <p id="for-first-test">https://{{inputURL}}</p>
+    <p><i>(only https protocol allowed at this time)</i></p>
+  </div>
+
+  <br />
+  <button type="button" (click)="showData()" [disabled]="buttonToggle">Make My Universe!</button><br /><br />
+  <p style="color: red;">Once Finished the Universe Generator will cost 5-10 energy to start.</p><br />
+  <div style="text-align: center;" class="container" *ngIf ="stage1Form.showCostFaulty">
+    <h5 style="text-decoration:wavy ; color: red;">Energy Cost: {{this.stage1Form.cost}} </h5><br />
+    <h5 style="text-decoration:wavy ; color: red;">Faulty Universe %: {{this.stage1Form.faultyUniverse}} </h5><br />
+  </div>
+</div>
+<app-stage-1-form [stage1Form]="stage1Form"></app-stage-1-form><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->
+
+<div style="text-align: center;">
+    <div style="margin-top: 20px; color: green; font-weight: bold;">
+      {{response}}
+    </div>
+    <div style="margin-top: 30px">
+      <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+    </div><br />
+
+    <div style="color: red;">
+      {{error | json}}
+    </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <button type="button" (click)="addTestCard()">Add Test Card</button>
+
+
+    <button type="button" (click)="back()">Home Page</button>
+    <br /><br />
+
+    <br />
+
+
+    <br /><br />
+    <h3 style="red;">**IMPORTANT CORS NOTE**</h3>
+    <p>
+      To get the most out of this generator it is <i>strongly</i> recommended to <b>download one of these extensions</b> for your browser that allows
+      "Cross-Origin Resource Sharing (CORS)".
+    </p>
+    <h5>
+      Below is a list of links I recommend for some of the most popular browsers:
+    </h5>
+    <ul style="list-style:none;">
+
+      <li>
+        <h4>
+          <a href="https://chrome.google.com/webstore/detail/cors-toggle/jioikioepegflmdnbocfhgmpmopmjkim?hl=en" target="_blank">
+            Chrome
+          </a>
+        </h4>
+      </li>
+      <li>
+        <h4>
+          <a href="https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere" target="_blank">
+            Firefox
+          </a>
+        </h4>
+      </li>
+      <li style="color: red;">  <i>(Explorer and Safari is unsupported at this stage.)</i> </li>
+    </ul>
+    <br />
+    <p>
+      Basically, this will allow permissions for this generator to 'talk' to other servers, and
+      this has to be assigned at the 'browser' level and not the program level to avoid triggering preflights (since many URLS do not
+      accept preflight requests using 'GET').
+    </p>
+    <p>If you are still getting network errors, please make sure the extension is <i>toggled on</i>!</p>
+
+    <p>It goes without saying, I will keep my eye out for angular packages that will help mitigate this problem without the need of the user 
+    to download extra or configure stuff.</p>
+    <br />
+
+    <br />
+    <!--
+    <label style="color:blue">Get Request Type: </label>
+    <select [(ngModel)]="get.type">
+      <option value="HTML">HTML</option>
+      <option value="XML">XML</option>
+      <option value="JSON">JSON</option>
+    </select>
+        -->
+
+
+  </div>
+  <br />
+  <br />
+  <br />
+  <br /><br />
+  (When I'm ready to make this look nice, adding a little intro screen to set the mood with a little SOMV lore. (Make sure to mention the different fluxes they use and can take a variety of forms as instruments to bend physics to their will!!!))
+
+</div>

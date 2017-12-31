@@ -1,0 +1,61 @@
+﻿<div style="text-align: center;" class="container" *ngIf="stage1Form.showForm"><br /><br />
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{stage1Form.availableEnergy}}</h4>
+  <h5 style="text-decoration: underline;">Stage 1: The Inflationary Period</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    This Baby Universe has just started to grow from your website, but it's still young enough that you can
+    use your Sage Energy to further tweak the odds of getting <i>ONE</i> desired Universe and guide its direction!!
+  </p><br />
+
+  <div class="row" style="margin-top: 20px; color: green; font-weight: bold;">
+    <div class="col-md-4" style="margin-top: 50px;">Universe 2: {{universe2Name}}</div>
+    <div class="col-md-4">Universe 1: {{universe1Name}}</div>
+    <div class="col-md-4" style="margin-top: 50px;">Universe 3: {{universe3Name}}</div>
+  </div>
+  <div class="row" style="margin-top: 20px; color: green; font-weight: bold;">
+    <div class="col-md-4" style="margin-top: 20px;">Chance Of Occuring: {{universe2Percent}}</div>
+    <div class="col-md-4" style="margin-top: -30px;">Chance Of Occuring: {{universe1Percent}}</div>
+    <div class="col-md-4" style="margin-top: 20px;">Chance Of Occuring: {{universe3Percent}}</div>
+  </div>
+  <div class="row" style="margin-top: 20px; color: green; font-weight: bold;">
+    <div class="col-md-4" style="margin-top: 20px; color: green; font-weight: bold;"><button type="button" (click)="increase(2)" [disabled]="rollToggle">Tweak Higher</button></div>
+    <div class="col-md-4" style="margin-top: -30px;"><button type="button" (click)="increase(1)" [disabled]="rollToggle">Tweak Higher</button></div>
+    <div class="col-md-4" style="margin-top: 20px; color: green; font-weight: bold;"><button type="button" (click)="increase(3)" [disabled]="rollToggle">Tweak Higher</button></div>
+  </div>
+  <br /><br />
+  <div style="margin-top: 20px; color: green; font-weight: bold;">
+    <button style="margin-top: 20px;" type="button" (click)="reset()" [disabled]="rollToggle">Reset</button><br /><br />
+  </div>
+
+  <div style="margin-top: 20px; color: green;">
+    <p>The Multiverse says to you, "Just to be clear my lord, the following are the approx. ranges you will roll for to get
+    a certain Universe.  If you are satisfied with these statistics, then please go ahead and hit the 'Roll My Universe!!' button down below."</p>
+    <ul style="list-style: none; font-weight: bold;">
+      <li>You get Universe 1 if you roll between 0% and {{universe1Percent}}%.</li>
+      <li>You get Universe 2 if you roll between {{universe1Percent}}% and {{num}}%</li>
+      <li>You get Universe 3 if you roll between {{num}}% and 100%</li>
+    </ul>
+
+  </div>
+  <div style="margin-top: 20px; color: green; font-weight: bold;">
+    <button style="margin-top: 20px;" type="button" (click)="roll()" [disabled]="rollToggle">Roll My Universe!!</button><br /><br />
+  </div>
+  <div style="margin-top: 20px; color: green; font-weight: bold;">
+    <h5>Tweaks Left: {{maxTweaks}}</h5>
+  </div><br />
+  <p style="color: blue; font-weight: bold;">{{tweakMessage}} </p>
+  <p style="color: green; font-weight: bold;">{{tweakMessage2}} </p>
+  <p style="color: orangered;font-weight: bold;">{{tweakMessage3}} </p>
+
+  <br />
+  <button type="button" (click)="submit()" [disabled]="submitToggle">Proceed to Stage 2....</button><br /><br /><br />
+  <div style="text-align: center;" class="container">
+    <h5 style="text-decoration:wavy ; color: red;">Energy Cost: {{this.stage2Form.cost}} </h5><br />
+    <h5 style="text-decoration:wavy ; color: red;">Faulty Universe %: {{this.stage2Form.faultyUniverse}} </h5><br /><br />
+    <br />
+  </div>
+</div>
+<app-stage-2-form [stage2Form]="stage2Form"></app-stage-2-form><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->
+
+
+

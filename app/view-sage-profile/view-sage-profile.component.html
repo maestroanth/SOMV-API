@@ -1,0 +1,117 @@
+﻿<h2 style="text-align: center;">
+  {{title}}
+</h2>
+
+
+
+<div style="text-align: center;">
+  <br />
+  <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle2"></i>
+  <br /><br />
+  <h1>
+    {{race.race_name}}
+  </h1>
+  <h2>
+    Level: {{sage.Level}}
+
+  </h2>
+  <br />
+  <h5 tooltip={{tipDimensionalWake}} placement="bottom" style="text-align: center; cursor: default;">
+    You exist in {{race.dimensional_wake}} spacetime.
+  </h5>
+  <br />
+  <p style="color: blue;">{{race.description}}</p>
+
+  <br />
+  <div class="row">
+    <div class="col-md-6">
+      <h3 tooltip={{tipPrimaryAttributes}} placement="top" style="text-align: center; cursor:default;">
+        {{subTitle}}
+      </h3>
+
+
+      <br />
+
+      <div class="btn-group-vertical text-right" role="group" style="margin-left: -18%;">
+        <div class="btn row" style="margin: .8em; text-align: right;">
+          <h5 class="noselect" tooltip={{tipIntuition}} placement="left" style="display:inline-block; cursor:default;">
+            <!--I am playing with custom tooltip placement/styles-->
+            Intuition: {{sage.Intuition}}&nbsp;&nbsp;
+          </h5>
+        </div>
+
+        <div class="btn row" style="margin: .8em; text-align: right;">
+          <h5 class="noselect" tooltip={{tipIngenuity}} placement="left" style="display: initial; cursor:default;">
+            Ingenuity: {{sage.Ingenuity}}&nbsp;&nbsp;
+          </h5>
+        </div>
+
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInquisitiveness}} placement="left" style="display: inline; cursor:default;">
+            Inquisitiveness: {{sage.Inquisitiveness}}&nbsp;&nbsp;
+          </h5>
+
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipIntelligence}} placement="left" style="display: inline; cursor:default;">
+            Intelligence: {{sage.Intelligence}}&nbsp;&nbsp;
+          </h5>
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInvigoration}} placement="left" style="display: inline; cursor:default;">
+            Invigoration: {{sage.Invigoration}}&nbsp;&nbsp;
+          </h5>
+        </div>
+        <div class="btn row" style="margin: .8em; text-align: right;">
+
+          <h5 class="noselect" tooltip={{tipInsanityControl}} placement="left" style="display: inline; cursor:default;">
+            Insanity Control: {{sage.Insanity_Control}}&nbsp;&nbsp;
+          </h5>
+
+        </div>
+        <br /><br />
+
+      </div>
+
+
+    </div>
+    <div class="col-md-6">
+ 
+
+  
+<br />
+      <div>
+        <img class="picture" src={{imageURL}} alt="Sorry, problem loading image....">
+      </div>
+      <!--
+      <button type="button" class="glyphicon glyphicon-circle-arrow-up">Increase</button>
+      <button type="button" class="glyphicon glyphicon-circle-arrow-down">Decrease</button>
+      -->
+      <br /><br />
+      <br />
+      <h3 style="text-align: center;">
+        Birth Universe: From The {{race.birth_universe}}
+      </h3>
+    </div>
+
+
+
+
+  </div>
+  <div style="padding-top:60px;">
+    <h5 style="color: green;">Racial Bonus: </h5>
+    <p style="color: green;">{{race.racial_bonuses}}</p>
+    <br />
+
+    <button type="button" (click)="back()">Home Page</button>
+    <br /><br />
+
+    <h4 style="color: forestgreen">{{response}}</h4><br /><br />
+
+    <br />
+    <h4 style="color: red">{{error}}</h4><br /><br />
+  </div>
+</div>

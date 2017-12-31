@@ -1,0 +1,122 @@
+﻿<div style="text-align: center;" class="container" *ngIf="stage2Form.showForm"><br /><br />
+  <h3 style="color:green">Available Energy: </h3>
+  <h4 style="color:green">{{stage2Form.availableEnergy}}</h4>
+  <h5 style="text-decoration: underline;">Stage 2: The Fine-Tuning Period</h5><br />
+  <p style="font-weight: bold; color: blue;">
+    The Multiverse says to you, "Congratulations Sage! I don't know how you did it, but you have started making your first Universe!
+    Now it is up to you to fine-tune it's parameters to your liking.  There is no right or wrong answer since you are the God and Creator of this Universe!"
+  </p><br />
+
+  <p style="font-weight: bold; color: green; margin-bottom: 20px;">
+    You can now adjust the physical parameters of your Universe (which will later influence your abilities from this Universe Card). You may fine-tune the attributes relative to your Sage Level; however
+    the more you fine-tune, the higher the energy cost will be along with an increased likelihood of this Universe blowing up in your face! (Resulting in a "Faulty Universe")
+  </p><br />
+  <h5 style="text-decoration: underline; color: orangered;">{{stage2Form.rolledUniverse.name}}</h5><br /><br />
+  <div class="btn-group-vertical text-right" role="group" style="margin-left: -18%; margin-top: 20px; ">
+    <h5 style="text-decoration: underline; color: coral; margin-bottom: 30px; text-align: center;">The Forces</h5>
+    <div class="btn row" style="margin: .8em; text-align: right;">
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display:inline-block; cursor:default;">
+        <!--I am playing with custom tooltip placement/styles-->
+        {{stage2Form.rolledUniverse.Force_1}}: {{stage2Form.rolledUniverse.Force_Str_1}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Force_Str_1-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Force_Str_1-Up')"></i>
+
+
+        <i id="Force_Str_1-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Force_Str_1-Down')"></i>
+
+      </h5>
+    </div>
+
+    <div class="btn row" style="margin: .8em; text-align: right;">
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display: initial; cursor:default;">
+        {{stage2Form.rolledUniverse.Force_2}}: {{stage2Form.rolledUniverse.Force_Str_2}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Force_Str_2-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Force_Str_2-Up')"></i>
+
+
+        <i id="Force_Str_2-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Force_Str_2-Down')"></i>
+
+      </h5>
+    </div>
+
+    <div class="btn row" style="margin: .8em; text-align: right;">
+
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display: inline; cursor:default;">
+        {{stage2Form.rolledUniverse.Force_3}}: {{stage2Form.rolledUniverse.Force_Str_3}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Force_Str_3-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Force_Str_3-Up')"></i>
+
+
+        <i id="Force_Str_3-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Force_Str_3-Down')"></i>
+
+      </h5>
+
+    </div>
+    <h5 style="text-decoration: underline; color: coral; margin-bottom: 30px; text-align: center; margin-top: 30px;">The Conceptual</h5>
+    <div class="btn row" style="margin: .8em; text-align: right;">
+
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display: inline; cursor:default;">
+        {{stage2Form.rolledUniverse.Concept_1}}: {{stage2Form.rolledUniverse.Concept_Str_1}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Concept_Str_1-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Concept_Str_1-Up')"></i>
+
+
+        <i id="Concept_Str_1-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Concept_Str_1-Down')"></i>
+
+      </h5>
+    </div>
+    <div class="btn row" style="margin: .8em; text-align: right;">
+
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display: inline; cursor:default;">
+        {{stage2Form.rolledUniverse.Concept_2}}: {{stage2Form.rolledUniverse.Concept_Str_2}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Concept_Str_2-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Concept_Str_2-Up')"></i>
+
+
+        <i id="Concept_Str_2-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Concept_Str_2-Down')"></i>
+
+      </h5>
+    </div>
+    <div class="btn row" style="margin: .8em; text-align: right;">
+
+      <h5 class="noselect" tooltip={{blah}} placement="left" style="display: inline; cursor:default;">
+        {{stage2Form.rolledUniverse.Concept_3}}: {{stage2Form.rolledUniverse.Concept_Str_3}}&nbsp;&nbsp;
+      </h5>
+      <h5 style="display: inline-block; text-align:right;">
+        <i id="Concept_Str_3-Up" class="fa fa-caret-square-o-up fa-stack" style="cursor: pointer; margin-top: -20px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id); " onmouseup="mouseUp(this.id);" (click)="increaseStat('Concept_Str_3-Up')"></i>
+
+
+        <i id="Concept_Str_3-Down" class="fa fa-caret-square-o-down fa-stack" style="cursor: pointer; margin-top: 20px; margin-left: -5.5px; width: 0em; height: 0em; line-height: 0em;" onmousedown="mouseDown(this.id);" onmouseup="mouseUp(this.id);" (click)="decreaseStat('Concept_Str_3-Down')"></i>
+
+
+      </h5>
+
+    </div>
+  </div>
+  <div>
+    <button style="margin-top: 20px; text-align: center;" type="button" (click)="reset()" [disabled]="resetToggle">Reset</button><br />
+    <button style="margin-top: 20px; text-align: center;" type="button" (click)="reroll()" [disabled]="resetToggle">Re-Roll Stats</button><br />
+    <h5 class="noselect" tooltip={{blah}} placement="top" style="cursor:default; text-align: center; margin-top: 20px;">&nbsp;&nbsp;&nbsp;Points Left You Can Adjust (Based On Sage Level): {{pointsLeftYouCanAdjust}}</h5><br />
+    <h5 class="noselect" tooltip={{blah}} placement="top" style="cursor:default; text-align: center;">&nbsp;Points In Pool: {{pointsInPool}}</h5>
+
+    <p style="color: green; font-style: italic; text-align: center;">(Directions: First Remove The Points to the Pool by deducting from your current Universe's attributes. Once they are in the point pool, 
+    you can then reassign them as you see wish.  If you want to start over again, just hit the "reset" button. You may also spend some energy and take a huge hit to a chance of a faulty Universe to re-roll the random parts of this Universe's stats.)</p>      <br />
+
+    <button type="button" (click)="submit()" [disabled]="submitToggle">Proceed to Stage 3....</button><br /><br /><br />
+    <p style="text-decoration:wavy ; color: red;">{{scoldMessage}} </p>
+    <div style="text-align: center;" class="container">
+      <h5 style="text-decoration:wavy ; color: red;">Energy Cost: {{stage2Form.cost}} </h5><br />
+      <h5 style="text-decoration:wavy ; color: red;">Faulty Universe %: {{stage2Form.faultyUniverse}} </h5><br /><br />
+      <br />
+    </div>
+  </div>
+</div>
+<div style="margin-top: 30px; text-align: center;">
+  <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="stage3Form.spinToggle"></i>
+</div><br />
+<app-stage-3-form [stage3Form]="stage3Form"></app-stage-3-form><!--Remember to bind @input shit here too for child components/this is the part that does the actual @input binding-->

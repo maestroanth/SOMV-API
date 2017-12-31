@@ -1,0 +1,37 @@
+﻿<h2 style="text-align: center;">
+  {{title}}
+</h2>
+<br />
+<div style="text-align: center;">
+  <input type="hidden" name="_token" value="M0ev1b4dWs6hSGEHXBWTTJYwmdfLrWWi0nfzdGuR">
+  <label>Choose your Sage Name (This is just like a "username")</label><br /><br />
+  <input [(ngModel)]="sageRequest.sagename" (keyup)="0" placeholder="Sage Name"><br />
+  <p>{{sageRequest.sagename}}</p>
+
+  <label>Choose your Password. (I recommend not using the same password here that you use at your bank! I don't need that kind of temptation ;))</label><br /><br />
+  <input [(ngModel)]="sageRequest.password" (keyup)="0" type="password" placeholder="Password"><br />
+  <p>{{sageRequest.password}}</p><br />
+
+  <!--
+  <label>Re-enter your password.</label><br /><br />
+  <input [(ngModel)]="sageAccount.password_confirm" (keyup)="0" type="password" name="password_confirmation" placeholder="Password"><br />
+  <p>{{sageRequest.password_confirm}}</p><br />
+      -->
+  <label>Enter your Real First and Last Name (This is just like the first and last names on your driver's license ;P )</label><br /><br />
+  <input [(ngModel)]="sageRequest.realname" (keyup)="0" placeholder="First and Last Name"><br />
+  <p>{{sageRequest.realname}}</p><br />
+
+  <label>Enter your email address (I have no need to contact you unless you contact me first!)</label><br /><br />
+  <input [(ngModel)]="sageRequest.email" (keyup)="0" placeholder="Email Address"><br />
+  <p>{{sageRequest.email}}</p><br />
+
+  <button type="button" (click)="createNewAccount()">Create Sage Account</button>
+  <button type="button" routerLink="/welcome" routerLinkActive="active">Back</button>
+  <br /><br />
+  <h4 style="color: forestgreen">{{response}}</h4>
+  <br />
+  <i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true" animation="spin" size="4x" *ngIf="spinToggle"></i>
+  <br />
+  <p style="color: red">{{sageNameError}}</p>
+  <br />
+</div>
