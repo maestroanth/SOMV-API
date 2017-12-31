@@ -179,7 +179,7 @@ class CardController extends Controller
 
 
             $this->$card = Card::where('id', $cards_to_delete['id'])->get();//$i might throw error here
-            $totalEnergy = $totalEnergy + $this->$card->Energy_Value;
+            $totalEnergy = $totalEnergy + $this->$card[0]->Energy_Value;
             $deleteCard = Card::find($cards_to_delete['id']);
             if ($deleteCard->delete()) {
                 $success = true;
