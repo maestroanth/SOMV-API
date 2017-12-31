@@ -193,7 +193,7 @@ class CardController extends Controller
             //$this->response = "test"; //json_encode($card);
             $cards_to_delete = json_decode($request->getContent(), true);
 
-            if(!is_array($cards_to_delete)) {
+            if(!$cards_to_delete[1])) {
 
                 $this->$card = Card::where('id', $cards_to_delete['id'])->get();//$i might throw error here
                 $totalEnergy = $totalEnergy + $this->$card->Energy_Value;
